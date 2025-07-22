@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\Ouath_TokenService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Services\Ouath_TokenService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataServicesNET80\DataServicesNET80.csproj" />
+    <ProjectReference Include="..\denModels\denModels.csproj" />
+  </ItemGroup>
+
+</Project>

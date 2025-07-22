@@ -1,0 +1,75 @@
+﻿<Window x:Class="ProBroMVVM.SyncQuantitiesWithMarketPlacesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+        xmlns:local="clr-namespace:ProBroMVVM"
+         xmlns:vm="clr-namespace:denViewModels;assembly=denViewModels"
+           xmlns:res="clr-namespace:denLanguageResourses;assembly=denLanguageResourses" xmlns:productbrowser="clr-namespace:denViewModels.ProductBrowser;assembly=denViewModels" d:DataContext="{d:DesignInstance Type=productbrowser:SyncQuantitiesWithMarketPlacesViewModel}"
+        mc:Ignorable="d" shared:WindowExtensions.SetSizeToContent="{Binding SetSizeToContent}"
+        Title="{x:Static res:Resources.SyncQuantityWithSalesPlatforms}" Width="300" Height="100" WindowStartupLocation="CenterOwner">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <!--<i:Interaction.Behaviors>
+        <shared:SizeToContentBehavior SizeToContent="{Binding SizeToContent}"/>
+    </i:Interaction.Behaviors>-->
+    <Window.Resources>
+        <shared:RGBToBrushConverter x:Key="RGBToBrushConverter" />
+        <shared:NotBooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter"/>
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+        <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ItemsControl ItemsSource="{Binding AllMarketPlaces}" Grid.Row="0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <!-- Definicja kolumn -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- MarketPlaceName -->
+                        <TextBlock Text="{Binding MarketPlaceName}" Grid.Column="0" Margin="3"/>
+
+                        <!-- Grid z ProgressBar i TextBlock -->
+                        <Grid Grid.Column="1">
+                            <ProgressBar IsIndeterminate="True" 
+                                         Visibility="{Binding IsProcessing, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="3" VerticalAlignment="Stretch"/>
+                            <TextBlock Text="{Binding Result}" 
+                                       Visibility="{Binding IsProcessing, Converter={StaticResource NotBooleanToVisibilityConverter}}" Margin="3" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <!-- Kwadrat z tłem Color -->
+                        <Rectangle Width="20" Height="20" 
+                                   Fill="{Binding Colour, Converter={StaticResource RGBToBrushConverter}}" 
+                                   Grid.Column="3"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Margin="3" Grid.Column="0"  HorizontalAlignment="Stretch" 
+Command="{Binding CancelCommand}" Content="{x:Static res:Resources.Cancel}" IsEnabled="{Binding CanCancel}" />
+            <StackPanel Grid.Column="1" />
+            <Button Margin="3" Grid.Column="2" HorizontalAlignment="Stretch" 
+Command="{Binding OkCommand}" Content="{x:Static res:Resources.Ok}" IsEnabled="{Binding CanLeave}"/>
+        </Grid>
+    </Grid>
+</Window>

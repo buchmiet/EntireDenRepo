@@ -1,0 +1,335 @@
+<UserControl x:Class="MayAlsoFitMVVM.MayAlsoFitUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:MayAlsoFitMVVM"
+              xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+               xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=vm:MayAlsoFitViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <shared:BooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+    <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+    </Grid.RowDefinitions>
+        <UniformGrid Columns="1" Grid.Row="0" >
+            <GroupBox Header="Parts">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox>
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top" Margin="3" >
+                                <UniformGrid Rows="1" DockPanel.Dock="Left">
+                                    <TextBox Margin="3,0,3,0" Text="{Binding MpnSearch}"></TextBox>
+                                    <Button Margin="3" Command="{Binding SearchBodyByMPNCommand}" >Search by MPN</Button>
+                                </UniformGrid>
+                                <UniformGrid Rows="1" DockPanel.Dock="Right">
+                                    <TextBox Margin="0,0,3,0" Text="{Binding NameSearch}"></TextBox>
+                                    <Button Margin="3" Command="{Binding SearchBodyByNameCommand}" >Search by name</Button>
+
+                                    <Button  Margin="3" Command="{Binding ClearBodiesCommand}">Clear</Button>
+                                </UniformGrid>
+                            </DockPanel>
+                            <UniformGrid Rows="1">
+                              
+                                <DataGrid Margin="3,3,3,3"  AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding ListaBodies}"
+                                        SelectionMode="Extended">
+                                    <!--SelectedItem="{Binding ListaBodiesSelectedItem}"-->
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=SelectedItems}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding name}"/>
+                                        <DataGridTextColumn Header="MPN" IsReadOnly="True" Width="SizeToCells" Binding="{Binding mpn}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Grid Visibility="{Binding ListaBodiesItemSelected,Converter={StaticResource BooleanToVisibilityConverter}}" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="3*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="3*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Button Grid.Row="1" Margin="3" IsEnabled="{Binding ListaBodiesItemSelectedAndMore}" Command="{Binding Add2BgroupCommand}" >Add to group</Button>
+                                    <Button Grid.Row="3" Margin="3" Command="{Binding CreateNewBodyGroupCommand}" IsEnabled="{Binding ListaBodiesItemSelected}" >
+                                        <TextBlock TextWrapping="Wrap" >Create new group<LineBreak/> for selected parts
+                                        </TextBlock>
+                                    </Button>
+                                    <Button Grid.Row="4" Margin="3" IsEnabled="{Binding ListaBodiesItemSelected}" Visibility="Collapsed"  >Find compatible watches</Button>
+
+                                </Grid>
+                            </UniformGrid>
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1">
+                        <UniformGrid  Rows="1">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <DockPanel Grid.Row="0" Margin="3" >
+                                    <!--<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                        <Label>Search:</Label>
+                                        <TextBox Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>-->
+                                    <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch" Grid.Row="0" Margin="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0">Search:</Label>
+                                        <TextBox Grid.Column="1" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"/>
+                                    </Grid>
+
+                                    <Label DockPanel.Dock="Top">Available groups of parts:</Label>
+
+
+                                    <DataGrid DockPanel.Dock="Bottom" Margin="3"  AutoGenerateColumns="False" CanUserAddRows="False"
+                                                ItemsSource="{Binding DostepneGrupy}" SelectedItem="{Binding SelectedGrupaCzesci}" SelectionMode="Single">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn  IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </DockPanel>
+
+
+                                <UniformGrid Columns="1" Grid.Row="1" Visibility="{Binding GrupaczesciItemSelected,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <DockPanel >
+                                        <Label DockPanel.Dock="Left">Group's name:</Label>
+                                        <TextBox DockPanel.Dock="Right" Text="{Binding Bodiesgroupname}"></TextBox>
+                                    </DockPanel>
+                                    <UniformGrid Rows="1" DockPanel.Dock="Bottom">
+                                        <Button Margin="3" Command="{Binding SavebodiesnameCommand}" IsEnabled="{Binding GrupaczesciItemSelected}" >Save name</Button>
+                                        <Button Margin="3" Command="{Binding DeletebodiesgroupCommand}" IsEnabled="{Binding GrupaczesciItemSelected}">Delete group</Button>
+                                    </UniformGrid>
+                                </UniformGrid>
+                                <Button Grid.Row="2" Margin="3"  Visibility="Collapsed"  >Find compatible watches</Button>
+
+                            </Grid>
+
+                            <DockPanel Visibility="{Binding GrupaczesciItemSelected,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Label DockPanel.Dock="Top">Items in group:</Label>
+                                <DataGrid Margin="3" DockPanel.Dock="Bottom" ItemsSource="{Binding BodiesInGroup}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding name}"/>
+                                        <DataGridTextColumn Header="MPN" IsReadOnly="True" Width="SizeToCells" Binding="{Binding mpn}"/>
+                                        <DataGridTemplateColumn Width="SizeToCells">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="Remove" Command="{Binding DataContext.RemoveBodyCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}"/>
+                                                </DataTemplate>
+
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+
+                                </DataGrid>
+                            </DockPanel>
+
+                        </UniformGrid>
+                    </GroupBox>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+
+
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0">Groups of parts:</Label>
+
+                        <!--<DataGrid Grid.Row="1" Margin="3" ItemsSource="{Binding DostepneGrupyLast}"  AutoGenerateColumns="False" CanUserAddRows="False"
+                                  >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn  IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+
+
+                                <DataGridTemplateColumn Width="SizeToCells">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button  IsEnabled="{Binding Path=assignButton}" >Assign</Button>
+                                        </DataTemplate>
+
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="SizeToCells">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button  IsEnabled="{Binding Path=removeButton}">Remove</Button>
+                                        </DataTemplate>
+
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>-->
+
+                        <DataGrid Grid.Row="1" Margin="3"  AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding AvailableGroups}"
+                                  SelectionMode="Single">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                                <DataGridTemplateColumn Width="SizeToCells">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Command="{Binding AssignCommand}" IsEnabled="{Binding AssignButton}">Assign</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="SizeToCells">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Command="{Binding RemoveCommand}" IsEnabled="{Binding RemoveButton}">Remove</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+
+                    </Grid>
+
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox Header="Watches">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox>
+                        <UniformGrid Rows="1" Grid.Column="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0">Search:</Label>
+                                    <TextBox Margin="3" Grid.Column="1" Text="{Binding WSterm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <!--<Button Margin="3" Grid.Column="1" x:Name="swatch" Command="{Binding SwatchCommand}" IsEnabled="False">Search</Button>-->
+                                </Grid>
+                                <DataGrid Margin="3" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
+                         ItemsSource="{Binding ListaZegow}" SelectedItem="{Binding ListaZegowSelectedItem}" SelectionMode="Single">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+
+                            <Grid Visibility="{Binding ListaZegowItemSelected,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Margin="3" Source="{Binding Zegareczek}"/>
+                                <Button Margin="3" Grid.Row="1"  Command="{Binding Add2GroupOfWatchesCommand}" IsEnabled="{Binding ListaZegowItemSelectedAndMore}">Add to group</Button>
+                                <Button Margin="3" Grid.Row="2"  Command="{Binding CreateGroupOfWatchesCommand}" IsEnabled="{Binding ListaZegowItemSelected}">Create new group</Button>
+                            </Grid>
+                        </UniformGrid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Column="1">
+                        <UniformGrid Rows="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <DockPanel Grid.Row="0" Margin="3">
+                                    <Label DockPanel.Dock="Top">Available groups of watches:</Label>
+                                    <DataGrid DockPanel.Dock="Bottom"  Margin="3" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
+                                ItemsSource="{Binding DostepneGrupyZegow}" SelectedItem="{Binding DostepneGrupyZegowSelectedItem}" SelectionMode="Single">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </DockPanel>
+
+                                <UniformGrid Columns="1" Grid.Row="1" Visibility="{Binding DostepneGrupyZegowItemSelected,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <DockPanel>
+                                        <Label DockPanel.Dock="Left">Group's name:</Label>
+                                        <TextBox DockPanel.Dock="Right"  Text="{Binding WatchesGroupName}" IsEnabled="{Binding DostepneGrupyZegowItemSelected}" />
+                                    </DockPanel>
+                                    <UniformGrid Rows="1" DockPanel.Dock="Bottom">
+                                        <Button Margin="3" x:Name="savewatchesName" Command="{Binding SaveWatchesNameCommand}" IsEnabled="{Binding DostepneGrupyZegowItemSelected}">Save name</Button>
+                                        <Button Margin="3" x:Name="deleteWatches" Command="{Binding DeleteWatchesGroupCommand}" IsEnabled="{Binding DostepneGrupyZegowItemSelected}">Delete group</Button>
+                                    </UniformGrid>
+                                </UniformGrid>
+                            </Grid>
+
+                            <DataGrid Margin="3" DockPanel.Dock="Bottom" AutoGenerateColumns="False" CanUserAddRows="False" 
+                          ItemsSource="{Binding WatchesInTheGroup}" Visibility="{Binding DostepneGrupyZegowItemSelected,Converter={StaticResource BooleanToVisibilityConverter}}" SelectionMode="Single">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                                    
+                                        <DataGridTemplateColumn Width="SizeToCells">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="Remove" Command="{Binding DataContext.RemoveFromGroupCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}"/>
+                                                </DataTemplate>
+
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+
+                                 
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </UniformGrid>
+                    </GroupBox>
+
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="1">Groups of watches:</Label>
+                        <DataGrid DockPanel.Dock="Bottom" x:Name="dostepneGrupyZegowLast" Margin="3" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" 
+                     ItemsSource="{Binding DostepneGrupyZegowLast}" SelectedItem="{Binding DostepneGrupyZegowLastSelectedItem}" SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                            </DataGrid.Columns>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding GroupaZegowSelectedCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </UniformGrid>
+        <ProgressBar Grid.Row="1"  Visibility="{Binding IsDataLoaded, Converter={StaticResource NotBooleanToVisibilityConverter}}" IsIndeterminate="True" Height="15"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="ProBroMVVM.RemovableButtonWithName"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:denViewModels;assembly=denViewModels" d:DataContext="{d:DesignInstance Type=vm:LabelViewModel}"
+                 xmlns:local="clr-namespace:ProBroMVVM"  
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" >
+    <Border Background="LightGray" BorderBrush="DarkGray" BorderThickness="2" CornerRadius="5" Padding="5">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Tekst}" Margin="0,0,5,0"/>
+            <Button Content="X" Command="{Binding RemoveCommand}"/>
+        </StackPanel>
+    </Border>
+</UserControl>

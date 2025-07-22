@@ -1,0 +1,128 @@
+﻿<Window x:Class="SalesSummaryControl.StatsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesSummaryControl"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+         xmlns:res="clr-namespace:denLanguageResourses;assembly=denLanguageResourses"
+   xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+        Title="StatsWindow" Height="450" Width="800">
+    <Window.Resources>
+        <shared:DimensionsConverter x:Key="DimensionsConverter"/>
+        <shared:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
+        <shared:RGBToBrushConverter x:Key="RGBToBrushConverter" />
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding ShowWindowCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding CloseWindowCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <i:Interaction.Behaviors>
+        <shared:WindowSizeAndPositionBehavior 
+           WindowWidth="{Binding WindowWidth, Mode=TwoWay}" 
+ WindowHeight="{Binding WindowHeight, Mode=TwoWay}"
+ WindowTop="{Binding WindowTop, Mode=TwoWay}" 
+ WindowLeft="{Binding WindowLeft, Mode=TwoWay}"/>
+    </i:Interaction.Behaviors>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border BorderBrush="#eeeeee" Grid.Column="0" BorderThickness="3">
+            <Grid Margin="3"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Background="#efefef" Margin="3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid  Margin="3" Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox IsChecked="{Binding IsShowNettoChecked}" Margin="3" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1"  Text="{x:Static res:Resources.ShowNetPrices}" Margin="3" TextWrapping="WrapWithOverflow" />
+                        </Grid>
+
+                        <Grid  Margin="3" Grid.Row="1" IsEnabled="{Binding IsLinesChartSelected}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox  Grid.Column="0" IsChecked="{Binding IsShowRunningAverageChecked}" Margin="3" VerticalAlignment="Center"/>
+                            <TextBlock  Grid.Column="1" Text="{x:Static res:Resources.DisplayMovingAverage}" Margin="3" TextWrapping="Wrap"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Border Margin="3" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="3">
+                            <RadioButton  GroupName="ChartType" IsChecked="{Binding IsLinesChartSelected}" Margin="3" />
+                            <TextBlock Text="{x:Static res:Resources.LineChart}" Margin="3" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3" Grid.Row="1">
+                            <RadioButton  GroupName="ChartType" IsChecked="{Binding IsPieChartSelected}" Margin="3"/>
+                            <TextBlock Text="{x:Static res:Resources.PieChart}" Margin="3" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="2" Background="#efefef" BorderBrush="#eeeeee" BorderThickness="3" VerticalAlignment="Stretch">
+                    <Grid  Margin="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{x:Static res:Resources.Legend}" Grid.Row="0" Margin="3"/>
+
+                        <ItemsControl ItemsSource="{Binding Legenda}" Margin="3" Grid.Row="1">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel Margin="3" HorizontalAlignment="Stretch" Background="#dedede">
+                                        <!-- Tekst bindowany z właściwością Text -->
+                                        <TextBlock Text="{Binding Text}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                                        <!-- Kwadrat Border z bindowanym kolorem -->
+                                        <Border Width="20" 
+                                  Height="20"
+                                  BorderBrush="Black" 
+                                  BorderThickness="1" 
+                                  Background="{Binding Colour, Converter={StaticResource RGBToBrushConverter}}" 
+                                  Margin="5,0" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                                        <TextBlock Text="{Binding TotalValue}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="3" Margin="3" VerticalAlignment="Bottom">
+                    <Button Command="{Binding CloseWindowCommand}" Content="{x:Static res:Resources.CloseWindow}" Margin="3"/>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <Image  Source="{Binding Image, Converter={StaticResource ByteArrayToImageConverter}}" Stretch="Fill"  Margin="3" Grid.Column="1"/>
+    </Grid>
+</Window>

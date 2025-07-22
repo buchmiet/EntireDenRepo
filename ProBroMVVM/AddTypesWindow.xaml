@@ -1,0 +1,67 @@
+﻿<Window x:Class="ProBroMVVM.AddTypesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProBroMVVM"
+         xmlns:vm="clr-namespace:denViewModels;assembly=denViewModels" d:DataContext="{d:DesignInstance Type=vm:AddTypesViewModel}"
+        mc:Ignorable="d"
+        Title="Choose types" Height="450" Width="300"  WindowStartupLocation="CenterOwner">
+    <Grid>
+        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+
+
+        <ListView Grid.Row="0" ItemsSource="{Binding TypesViewModels}" AlternationCount="2">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <!-- Default Background Color (for even rows) -->
+                    <Setter Property="Background" Value="White"/>
+                    <!-- Disable selection highlight -->
+                   
+                    <Setter Property="Padding" Value="0"/>
+                    <Style.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <!-- Change Background Color for odd rows -->
+                            <Setter Property="Background" Value="LightGray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IsSelected}" Margin="5" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Name}" Margin="5" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!-- Modify the default ListView template to include a ScrollViewer with vertical scroll bar enabled -->
+            <ListView.Template>
+                <ControlTemplate TargetType="ListView">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsPresenter/>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ListView.Template>
+        </ListView>
+
+
+
+
+
+        <UniformGrid  Columns="3" Grid.Row="1" VerticalAlignment="Bottom" Margin="3">
+                    <Button Command="{Binding CancelCommand}">Cancel</Button>
+                    <Label/>
+                    <Button Command="{Binding OkCommand}">Confirm</Button>
+                </UniformGrid>
+           
+        
+       
+    </Grid>
+</Window>

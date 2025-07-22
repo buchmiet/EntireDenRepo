@@ -1,0 +1,22 @@
+﻿<Window x:Class="ProBroMVVM.AddExtraSupplierWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:vm="clr-namespace:denViewModels;assembly=denViewModels"
+        xmlns:local="clr-namespace:ProBroMVVM" d:DataContext="{d:DesignInstance Type=vm:AddExtraSupplierViewModel}"
+        mc:Ignorable="d"
+        Title="Assign new supplier to the product" Height="158.522" Width="277.583" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Select the additional supplier" Margin="3"/>
+            <ComboBox  Margin="3" DisplayMemberPath="Name" SelectedValuePath="id" SelectedItem="{Binding SelectedValue}"  ItemsSource="{Binding Values}"/>
+            <TextBlock Text="Enter the price" Margin="3"/>
+            <TextBox  Margin="3" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <UniformGrid Rows="1">
+                <Button Content="OK" Command="{Binding AssignSupplierCommand}" Margin="3"/>
+                <Button Content="Cancel" Command="{Binding CancelCommand}" Margin="3"/>
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<themes>
+	<theme id="0" name="ubuntu">
+		<ready>\n$ \n</ready>
+		<cursoron>9474</cursoron>
+		<cursoroff>160</cursoroff>
+		<foregroundColours>
+			<color r="ee" g="ee" b="ec"></color>
+			<color r="8a" g="e2" b="34"></color>
+			<color  r="fa" g="57" b="50"></color>
+			<color  r="ff" g="08" b="83"></color>
+		</foregroundColours>
+		<background r="2c" g="00" b="1e"></background>
+		<border r="5e" g="27" b="50"></border>
+		<fontfile>UbuntuMono-Regular.ttf</fontfile>
+		<fontsize>25</fontsize>
+		<fontsizeX>25</fontsizeX>
+		<fontsizeY>25</fontsizeY>
+	</theme>
+	<theme id="0" name="c64">
+		<ready>\nREADY.\n</ready>
+		<cursoron>9608</cursoron>
+		<cursoroff>160</cursoroff>
+		<foregroundColours>
+			<color r="88" g="7b" b="cb"></color>
+			<color r="ff" g="ff" b="ff"></color>
+			<color  r="fa" g="57" b="50"></color>
+			<color  r="84" g="c5" b="cc"></color>
+		</foregroundColours>
+		<background r="50" g="45" b="9b"></background>
+		<border r="88" g="7b" b="cb"></border>		
+		<fontfile>PetMe64.ttf</fontfile>
+		<fontsize>10</fontsize>
+		<fontsizeX>10</fontsizeX>
+		<fontsizeY>10</fontsizeY>
+	</theme>
+	<theme id="1" name="msdos">
+		<ready>\nC:\></ready>
+		<cursoron>95</cursoron>
+		<cursoroff>160</cursoroff>
+		<foregroundColours>
+			<color r="d0" g="d0" b="d0"></color>
+			<color r="ff" g="ff" b="ff"></color>
+			<color  r="fa" g="57" b="50"></color>
+			<color  r="ff" g="08" b="83"></color>
+		</foregroundColours>
+		<background r="00" g="00" b="00"></background>
+		<border r="00" g="00" b="00"></border>	
+		<fontfile>Px437_ATI_9x16.ttf</fontfile>
+		<fontsize>15</fontsize>
+		<fontsizeX>9</fontsizeX>
+		<fontsizeY>16</fontsizeY>
+	</theme>
+	<theme id="2" name="macos">
+		<ready>desktoppenV2: ~user$</ready>
+		<cursoron>95</cursoron>
+		<cursoroff>160</cursoroff>
+		<foregroundColours>
+			<color  r="33" g="ff" b="33"></color>
+			<color r="ff" g="ff" b="ff"></color>
+			<color  r="fa" g="57" b="50"></color>
+			<color  r="75" g="b9" b="38"></color>
+		</foregroundColours>
+		<background r="00" g="00" b="00"></background>
+		<border r="00" g="00" b="00"></border>
+		<fontfile>Px437_ATI_9x16.ttf</fontfile>		
+		<fontsize>14</fontsize>
+		<fontsizeX>8</fontsizeX>
+		<fontsizeY>16</fontsizeY>
+	</theme>
+	<theme id="3" name="orange">
+		<ready>$</ready>
+		<cursoron>9474</cursoron>
+		<cursoroff>160</cursoroff>
+		<foregroundColours>
+			<color  r="ff" g="bf" b="00"></color>
+			<color r="ff" g="ff" b="ff"></color>
+			<color  r="fa" g="57" b="50"></color>
+			<color  r="75" g="b9" b="38"></color>
+		</foregroundColours>	
+		<background r="00" g="00" b="00"></background>
+		<border r="00" g="00" b="00"></border>
+		<fontfile>Px437_IBM_CGAthin.ttf</fontfile>
+		<fontsize>11</fontsize>
+		<fontsizeX>9</fontsizeX>
+		<fontsizeY>16</fontsizeY>
+	</theme>
+	<theme id="4" name="spectrum">
+		<ready> </ready>
+		<cursoron>9608</cursoron>
+		<cursoroff>9608</cursoroff>
+		<foregroundColours>
+			<color  r="00" g="00" b="00"></color>
+			<color r="ff" g="ff" b="ff"></color>
+			<color  r="fa" g="57" b="50"></color>
+			<color  r="75" g="b9" b="38"></color>
+		</foregroundColours>
+		<background r="ca" g="ca" b="ca"></background>
+		<border r="ca" g="ca" b="ca"></border>
+		<fontfile>zx82system.ttf</fontfile>
+		<fontsize>14</fontsize>
+		<fontsizeX>8</fontsizeX>
+		<fontsizeY>8</fontsizeY>
+	</theme>
+	<theme id="5" name="Selenized">
+		<ready> </ready>
+		<cursoron>95</cursoron>
+		<cursoroff>160</cursoroff>
+		<foregroundColours>
+			<color r="72" g="89" b="8f"></color>
+			<color  r="ad" g="bc" b="bc"></color>
+			<color  r="fa" g="57" b="50"></color>
+			<color  r="75" g="b9" b="38"></color>
+		</foregroundColours>		
+		<background r="10" g="3c" b="48"></background>
+		<border r="ca" g="ca" b="ca"></border>		
+		<fontfile>intelone-mono-font-family-regular.ttf</fontfile>
+		<fontsize>14</fontsize>
+		<fontsizeX>8</fontsizeX>
+		<fontsizeY>8</fontsizeY>
+	</theme>
+</themes>

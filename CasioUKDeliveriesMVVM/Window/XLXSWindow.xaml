@@ -1,0 +1,29 @@
+﻿<Window x:Class="CasioUKDeliveriesMVVM.XLSXWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:CasioUKDeliveriesMVVM" xmlns:viewmodel="clr-namespace:CasioUKDeliveriesMVVM" d:DataContext="{d:DesignInstance Type=vm:XLSXViewModel}"
+          xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+        mc:Ignorable="d"
+         WindowStartupLocation="CenterOwner" Title="Copy following text to excel" Height="500" Width="200">
+    <Window.Resources>
+
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                <TextBox Text="{Binding Xelx}" x:Name="xelx" Margin="3" />
+            </ScrollViewer>
+            <UniformGrid Grid.Row="1" Columns="{Binding NumberOfButtons}">
+                <Button Command="{Binding ConfirmCommand}" Margin="3">Confirm</Button>
+                <Button Command="{Binding CancelCommand}" Margin="3" Visibility="{Binding CancelButtonActive, Converter={StaticResource BooleanToVisibilityConverter}}">Cancel</Button>
+            </UniformGrid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,60 @@
+﻿<Window x:Class="denWPFSharedLibrary.ProductBrowserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:denWPFSharedLibrary"   xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=vm:ProductBrowserViewModel}"
+        mc:Ignorable="d"
+        Title="ProductBrowser" Height="450" Width="800" WindowStartupLocation="CenterOwner">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <DockPanel>
+            <UniformGrid DockPanel.Dock="Top" Rows="1">
+                <Label>Supplier:</Label>
+                <ComboBox  IsTextSearchEnabled="False" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="3,3,3,3" DisplayMemberPath="Name" SelectedValuePath="id"
+                     SelectedItem="{Binding SelectedSupplier, Mode=TwoWay}"  ItemsSource="{Binding Suppliers}"/>
+                <Label>Brand:</Label>
+                <ComboBox   IsTextSearchEnabled="False" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="3,3,3,3" DisplayMemberPath="Name" SelectedValuePath="id"
+                     SelectedItem="{Binding SelectedBrand, Mode=TwoWay}" ItemsSource="{Binding Brands}"/>
+                <Label>Type:</Label>
+                <ComboBox  IsEditable="True" IsTextSearchEnabled="False" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="3,3,3,3" DisplayMemberPath="Name" SelectedValuePath="id"
+                      SelectedItem="{Binding SelectedType, Mode=TwoWay}" ItemsSource="{Binding Types}"/>
+                <Label>Name:</Label>
+                <TextBox  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="3,3,3,3" Text="{Binding ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Behaviors>
+                        <vm:EnterKeyCommandBehavior EnterCommand="{Binding SearchCommand}"  />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label>MPN:</Label>
+                <TextBox    HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="3,3,3,3" Text="{Binding ProductMPN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Behaviors>
+                        <vm:EnterKeyCommandBehavior  EnterCommand="{Binding SearchCommand}"  />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Button Content="Search" x:Name="SearchForProducts" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Margin="3,3,3,3" Command="{Binding SearchCommand}"/>
+               
+            </UniformGrid>
+            <DataGrid x:Name="itemsGridView2" Margin="3,3,3,3" AutoGenerateColumns="False" Grid.Row="0"
+                  HorizontalAlignment="Stretch" Grid.ColumnSpan="2" ItemsSource="{Binding Products}"
+                  CanUserAddRows="False">
+                <i:Interaction.Behaviors>
+                    <vm:MouseDoubleClickBehavior DoubleClickCommand="{Binding DoubleClickCommand}"/>
+                </i:Interaction.Behaviors>
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="Number" IsReadOnly="True" Width="SizeToHeader" Binding="{Binding Number}"/>
+                    <DataGridTextColumn  Header="Name" IsReadOnly="True" Width="*" Binding="{Binding fullName}"/>
+                    <DataGridTextColumn  Header="Quantity" IsReadOnly="True" Width="SizeToHeader" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn  Header="Brand" IsReadOnly="True" Width="SizeToHeader" Binding="{Binding Brand}"/>
+                    <DataGridTextColumn  Header="Type" IsReadOnly="True" Width="SizeToHeader" Binding="{Binding Type}"/>
+                    <DataGridTextColumn  Header="MPN" IsReadOnly="True" Width="*" Binding="{Binding mpn}"/>
+                    <DataGridCheckBoxColumn  Header="Tracking" IsReadOnly="True" Width="SizeToHeader" Binding="{Binding Readytotrack}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+
+</Window>

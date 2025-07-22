@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfLabelProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<LabelProperties>
+		<LabelName>horizontal box label</LabelName>
+		<TopFont>14</TopFont>
+		<LargeFont>35</LargeFont>
+		<LesserFont>16</LesserFont>
+		<BottomFont>12</BottomFont>
+		<Height>32</Height>
+		<Width>57</Width>
+		<CentralLineSpacing>5</CentralLineSpacing>
+		<BottomMargin>5</BottomMargin>
+		<TopMargin>5</TopMargin>
+		<Landscape>true</Landscape>
+		<LabelType>ProductLabel</LabelType>
+	</LabelProperties>
+	<LabelProperties>
+		<LabelName>vertical box label</LabelName>
+		<TopFont>16</TopFont>
+		<LargeFont>35</LargeFont>
+		<LesserFont>16</LesserFont>
+		<BottomFont>12</BottomFont>
+		<Height>57</Height>
+		<Width>32</Width>
+		<CentralLineSpacing>5</CentralLineSpacing>
+		<BottomMargin>5</BottomMargin>
+		<TopMargin>5</TopMargin>
+		<Landscape>false</Landscape>
+		<LabelType>ProductLabel</LabelType>
+	</LabelProperties>
+	<LabelProperties>
+		<LabelName>long horizontal box label</LabelName>
+		<TopFont>12</TopFont>
+		<LargeFont>32</LargeFont>
+		<LesserFont>12</LesserFont>
+		<BottomFont>12</BottomFont>
+		<Height>28</Height>
+		<Width>89</Width>
+		<CentralLineSpacing>5</CentralLineSpacing>
+		<BottomMargin>5</BottomMargin>
+		<TopMargin>5</TopMargin>
+		<Landscape>true</Landscape>
+		<LabelType>ProductLabel</LabelType>
+	</LabelProperties>
+</ArrayOfLabelProperties>

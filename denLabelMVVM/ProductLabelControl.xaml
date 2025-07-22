@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="denLabelMVVM.ProductLabel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"          
+               xmlns:vm="clr-namespace:denViewModels;assembly=denViewModels" 
+             mc:Ignorable="d" 
+                xmlns:res="clr-namespace:denLanguageResourses;assembly=denLanguageResourses"
+                 xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary" d:DataContext="{d:DesignInstance Type=vm:ProductLabelViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <shared:RGBToBrushConverter x:Key="RGBToBrushConverter"/>
+        <shared:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Bottom" Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Border BorderBrush="LightGray" BorderThickness="2" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="{Binding Image, Converter={StaticResource ByteArrayToImageConverter}}" Stretch="Uniform" Width="{Binding ImageWidth}" Height="{Binding ImageHeight}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            </ScrollViewer>
+        </Grid>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="3">
+            <UniformGrid Rows="1" Margin="3">
+                <TextBox Text="Type of label"></TextBox>
+                <TextBox Text="{Binding LabelType}" Background="Transparent" FontWeight="Bold"></TextBox>
+            </UniformGrid>
+            <Border BorderThickness="3" BorderBrush="{Binding TopTextColour, Converter={StaticResource RGBToBrushConverter}}" Margin="3">
+                <UniformGrid Rows="1" Columns="2" Margin="3">
+                    <TextBlock Text="{x:Static res:Resources.MultidrawersFont}"></TextBlock>
+
+                    <shared:NumericUpDownControl Value="{Binding TopFont}" UpButtonCommand="{Binding IncreaseTopFont}" DownButtonCommand="{Binding DecreaseTopFont}"/>
+                </UniformGrid>
+            </Border>
+            <Border BorderThickness="3" BorderBrush="{Binding CentralLargeTextColour, Converter={StaticResource RGBToBrushConverter}}" Margin="3">
+                <UniformGrid Rows="1" Columns="2" Margin="3">
+                    <TextBlock Text="{x:Static res:Resources.LocationsFont}"></TextBlock>
+                    <shared:NumericUpDownControl Value="{Binding LargeFont}" UpButtonCommand="{Binding IncreaseLargeFont}" DownButtonCommand="{Binding DecreaseLargeFont}"/>
+                </UniformGrid>
+              </Border>
+            <Border BorderThickness="3" BorderBrush="{Binding CentralSmallTextColour, Converter={StaticResource RGBToBrushConverter}}" Margin="3">
+                <UniformGrid Rows="1" Columns="2" Margin="3">
+                    <TextBlock Text="{x:Static res:Resources.ProductNameFont}"></TextBlock>
+                    <shared:NumericUpDownControl Value="{Binding LesserFont}" UpButtonCommand="{Binding IncreaseLesserFont}" DownButtonCommand="{Binding DecreaseLesserFont}"/>
+                </UniformGrid>
+            </Border>
+            <Border BorderThickness="3" BorderBrush="{Binding BottomTextColour, Converter={StaticResource RGBToBrushConverter}}" Margin="3">
+                <UniformGrid Rows="1" Columns="2" Margin="3">
+                    <TextBlock Text="{x:Static res:Resources.ProductsMpnFont}"></TextBlock>
+                    <shared:NumericUpDownControl Value="{Binding BottomFont}" UpButtonCommand="{Binding IncreaseBottomFont}" DownButtonCommand="{Binding DecreaseBottomFont}"/>
+                </UniformGrid>
+            </Border>
+            <UniformGrid Rows="1" Columns="2" Margin="3">
+                <TextBlock Text="{x:Static res:Resources.HeightInMm}"></TextBlock>
+                <shared:NumericUpDownControl Value="{Binding Height}" UpButtonCommand="{Binding IncreaseHeight}" DownButtonCommand="{Binding DecreaseHeight}"/>
+            </UniformGrid>
+
+            <UniformGrid Rows="1" Columns="2" Margin="3">
+                <TextBlock Text="{x:Static res:Resources.HeightInMm}"></TextBlock>
+                <shared:NumericUpDownControl Value="{Binding Width}" UpButtonCommand="{Binding IncreaseWidth}" DownButtonCommand="{Binding DecreaseWidth}"/>
+            </UniformGrid>
+
+            <UniformGrid Rows="1" Columns="2" Margin="3">
+                <TextBlock Text="{x:Static res:Resources.SpaceBetweenTwoCentralLines}"></TextBlock>
+                <shared:NumericUpDownControl Value="{Binding CentralLineSpacing}" UpButtonCommand="{Binding IncreaseCentralLineSpacing}" DownButtonCommand="{Binding DecreaseCentralLineSpacing}"/>
+            </UniformGrid>
+            <UniformGrid Rows="1" Columns="2" Margin="3">
+                <TextBlock Text="{x:Static res:Resources.BottomMargin}"></TextBlock>
+                <shared:NumericUpDownControl Value="{Binding BottomMargin}" UpButtonCommand="{Binding IncreaseBottomMargin}" DownButtonCommand="{Binding DecreaseBottomMargin}"/>
+            </UniformGrid>
+
+            <UniformGrid Rows="1" Columns="2" Margin="3">
+                <TextBlock Text="{x:Static res:Resources.BottomMargin}"></TextBlock>
+                <shared:NumericUpDownControl Value="{Binding TopMargin}" UpButtonCommand="{Binding IncreaseTopMargin}" DownButtonCommand="{Binding DecreaseTopMargin}"/>
+            </UniformGrid>
+
+            <UniformGrid Rows="1" Columns="2" Margin="3">
+                <TextBlock Text="{x:Static res:Resources.LandscapeOrientation}"></TextBlock>
+                <CheckBox IsChecked="{Binding Landscape}" VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+            </UniformGrid>
+
+            <Button Command="{Binding PrintCommand}" Margin="3" Content="{x:Static res:Resources.PrintExample}"></Button>
+            <Button Command="{Binding DeleteCommand}" Margin="3" Content="{x:Static res:Resources.DeleteLabel}"></Button>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

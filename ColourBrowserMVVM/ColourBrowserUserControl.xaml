@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="ColourBrowserMVVM.ColourBrowserUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:ColourBrowserMVVM" d:DataContext="{d:DesignInstance Type=vm:ColourBrowserViewModel}"
+               xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding MakeSureItsReadyCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <shared:NotBooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter"/>
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <shared:RGBToBrushConverter x:Key="RGBToBrushConverter"/>
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Stretch" Grid.Row="0" IsEnabled="{Binding IsDataLoaded,Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" HorizontalAlignment="Left">
+                <GroupBox Header="Available colours">
+                    <ListView  
+                          Margin="3" 
+                          VerticalAlignment="Stretch" 
+                        ItemsSource="{Binding NazwyKolorow}"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                          ScrollViewer.CanContentScroll="True"
+                          Height="Auto"
+                        DisplayMemberPath="name"
+                     SelectedItem="{Binding SelectedColor}"
+                        
+                       />
+                </GroupBox>
+            </Grid>
+            <!--Visibility="{Binding IsColorPicked, Converter={StaticResource NotBooleanToVisibilityConverter}}"-->
+            <Grid Grid.Column="1" HorizontalAlignment="Left">
+                <GroupBox Header="Available colour schemes">
+                    <ItemsControl ItemsSource="{Binding ColourSchemes}" Visibility="{Binding IsColourFromListSelected, Converter={StaticResource BooleanToVisibilityConverter} }">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="2" 
+                    BorderBrush="Gray" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Padding="5">
+                                    <Image Source="{Binding Image}" 
+                       Stretch="UniformToFill" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                <i:InvokeCommandAction Command="{Binding SchemeSelectedCommand}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Image>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="2" HorizontalAlignment="Left">
+                <GroupBox Header="Available colours">
+                    <ItemsControl ItemsSource="{Binding AvailableColours}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="2" 
+                    BorderBrush="Gray" 
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch"
+                    Padding="5"
+                    Background="{Binding Color, Converter={StaticResource RGBToBrushConverter}}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ColourSelectedCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                       
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </GroupBox>
+            </Grid>
+            <!--SelectedColorChanged="{Binding}"-->
+            <Grid Grid.Column="3" HorizontalAlignment="Left">
+                <GroupBox Header="Pick colour to replace">
+                    <StackPanel x:Name="wybierzK" >
+                        <xctk:ColorPicker Name="cp" 
+                       DisplayColorAndName="True" 
+                     Margin="3"
+                     SelectedColor="{Binding PickedColour,
+Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          
+                      VerticalAlignment="Top" 
+                                          Visibility="{Binding IsColorPicked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        </xctk:ColorPicker>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="4" HorizontalAlignment="Left">
+                <GroupBox Header="Final effect">
+                
+                    <StackPanel x:Name="tada" VerticalAlignment="Center" >
+                        <Image Source="{Binding FinalEffect}"></Image>
+                    </StackPanel>
+                
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="5" HorizontalAlignment="Left">
+                <GroupBox Header="Seen as">
+                    <StackPanel x:Name="composite" VerticalAlignment="Center">
+                        <Image Width="{Binding MalutkieWidth}" 
+                           Height="{Binding MalutkieHeight}" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                               Source="{Binding FinalEffectTiny}"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="6" HorizontalAlignment="Left">
+                <Button x:Name="saveTranslation" 
+                    IsEnabled="{Binding IsSaveTranslationEnabled}" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Margin="3" 
+                    Command="{Binding SaveTranslationCommand}">
+                    Save this colour
+                </Button>
+            </Grid>
+        </Grid>
+        <ProgressBar Grid.Row="1"  Visibility="{Binding IsDataLoaded, Converter={StaticResource NotBooleanToVisibilityConverter}}" IsIndeterminate="True" Height="15"/>
+    </Grid>
+</UserControl>

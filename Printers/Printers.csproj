@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="8.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\denMethods\denMethods.csproj" />
+    <ProjectReference Include="..\denModels\denModels.csproj" />
+    <ProjectReference Include="..\denSharedLibrary\denSharedLibrary.csproj" />
+    <ProjectReference Include="..\SettingsKeptInFile\SettingsKeptInFile.csproj" />
+  </ItemGroup>
+
+</Project>

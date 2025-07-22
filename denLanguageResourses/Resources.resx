@@ -1,0 +1,1053 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SaleStatistics" xml:space="preserve">
+    <value>Sale statistics:</value>
+  </data>
+  <data name="PrintCN22s" xml:space="preserve">
+    <value>Print CN22s</value>
+  </data>
+  <data name="AmazonOrdersBash" xml:space="preserve">
+    <value>Amazon Orders Bash</value>
+  </data>
+  <data name="GenerateDataForClickAndDrop" xml:space="preserve">
+    <value>Generate data for Click and Drop</value>
+  </data>
+  <data name="PrintSummary" xml:space="preserve">
+    <value>Print summary</value>
+  </data>
+  <data name="ChangeTerminalTheme" xml:space="preserve">
+    <value>Change terminal theme</value>
+  </data>
+  <data name="RefreshOrdersEvery5Mins" xml:space="preserve">
+    <value>refresh orders every 5 mins</value>
+  </data>
+  <data name="SelectAllNew" xml:space="preserve">
+    <value>Select all new</value>
+  </data>
+  <data name="SelectEbayOrders" xml:space="preserve">
+    <value>Select eBay orders</value>
+  </data>
+  <data name="SelectAmazonOrders" xml:space="preserve">
+    <value>Select Amazon orders</value>
+  </data>
+  <data name="Flip" xml:space="preserve">
+    <value>Flip</value>
+  </data>
+  <data name="FlipNewOrders" xml:space="preserve">
+    <value>Flip new orders</value>
+  </data>
+  <data name="FetchOrdersButtonText" xml:space="preserve">
+    <value>Fetch Orders</value>
+  </data>
+  <data name="PrintInvoicesButtonText" xml:space="preserve">
+    <value>Print Invoices</value>
+  </data>
+  <data name="ChangeStatusButtonText" xml:space="preserve">
+    <value>Change Status</value>
+  </data>
+  <data name="OrderDetailsLabel" xml:space="preserve">
+    <value>Order details:</value>
+  </data>
+  <data name="OrderIDLabel" xml:space="preserve">
+    <value>Order ID</value>
+  </data>
+  <data name="MarketLabel" xml:space="preserve">
+    <value>Market</value>
+  </data>
+  <data name="PaidOnLabel" xml:space="preserve">
+    <value>Paid on</value>
+  </data>
+  <data name="TotalLabel" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="ItemsLabel" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="BuyerLabel" xml:space="preserve">
+    <value>Buyer</value>
+  </data>
+  <data name="CompanyLabel" xml:space="preserve">
+    <value>Company:</value>
+  </data>
+  <data name="FirstNameLabel" xml:space="preserve">
+    <value>First Name:</value>
+  </data>
+  <data name="SecondNameLabel" xml:space="preserve">
+    <value>Second Name:</value>
+  </data>
+  <data name="SurnameLabel" xml:space="preserve">
+    <value>Surname:</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="PhoneLabel" xml:space="preserve">
+    <value>Phone:</value>
+  </data>
+  <data name="AddressLabel" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="FirstLineLabel" xml:space="preserve">
+    <value>First Line:</value>
+  </data>
+  <data name="SecondLineLabel" xml:space="preserve">
+    <value>Second Line:</value>
+  </data>
+  <data name="CityLabel" xml:space="preserve">
+    <value>City:</value>
+  </data>
+  <data name="PostcodeLabel" xml:space="preserve">
+    <value>Postcode:</value>
+  </data>
+  <data name="ProcessingAmazonOrdersMessage" xml:space="preserve">
+    <value>Attempting to process data of Amazon orders from the clipboard...</value>
+  </data>
+  <data name="NoTextInClipboardMessage" xml:space="preserve">
+    <value>failed - there is no text in the clipboard</value>
+  </data>
+  <data name="IncorrectFormatMessage" xml:space="preserve">
+    <value>failed - text in the clipboard has incorrect format</value>
+  </data>
+  <data name="OrderNotDownloadedMessage" xml:space="preserve">
+    <value>failed - order has not been downloaded yet</value>
+  </data>
+  <data name="NoOrdersDownloadedMessage" xml:space="preserve">
+    <value>No orders downloaded yet</value>
+  </data>
+  <data name="NoDatabaseConnectionMessage" xml:space="preserve">
+    <value>failed - no connection to the database</value>
+  </data>
+  <data name="OrdersProcessedMessage" xml:space="preserve">
+    <value>success - {0} order(s) processed</value>
+  </data>
+  <data name="PreparingDataForCnDMessagePart1" xml:space="preserve">
+    <value>Preparing data for C'n'D for </value>
+  </data>
+  <data name="PreparingDataForCnDMessagePart2" xml:space="preserve">
+    <value> order(s)...</value>
+  </data>
+  <data name="DoneMessage" xml:space="preserve">
+    <value> done.</value>
+  </data>
+  <data name="PartialOrderNotProcessedMessage" xml:space="preserve">
+    <value>At least one order is not processed yet, give it a moment</value>
+  </data>
+  <data name="PartialOrderNotProcessedTitle" xml:space="preserve">
+    <value>Order not processed yet</value>
+  </data>
+  <data name="NoTextInClipboardTitle" xml:space="preserve">
+    <value>Information not found in the clipboard</value>
+  </data>
+  <data name="InvalidClipboardFormatTitle" xml:space="preserve">
+    <value>Invalid text in the clipboard</value>
+  </data>
+  <data name="NoDatabaseConnectionTitle" xml:space="preserve">
+    <value>Database Connection Error</value>
+  </data>
+  <data name="OrderNotProcessedTitle" xml:space="preserve">
+    <value>Order not processed yet</value>
+  </data>
+  <data name="NoOrdersDownloadedTitle" xml:space="preserve">
+    <value>You need to download orders first</value>
+  </data>
+  <data name="ChangingStatuses" xml:space="preserve">
+    <value>Changing statuses...</value>
+  </data>
+  <data name="SelectStatus" xml:space="preserve">
+    <value>Select status</value>
+  </data>
+  <data name="Printing" xml:space="preserve">
+    <value>Printing</value>
+  </data>
+  <data name="CN22Forms" xml:space="preserve">
+    <value>CN22 forms</value>
+  </data>
+  <data name="ConfirmPrinter" xml:space="preserve">
+    <value>Confirm printer</value>
+  </data>
+  <data name="PrintingOn" xml:space="preserve">
+    <value>Printing on {0}, is that correct?</value>
+  </data>
+  <data name="PrintInvoices" xml:space="preserve">
+    <value>Print invoices</value>
+  </data>
+  <data name="JeffBezosDetected" xml:space="preserve">
+    <value>Jeff Bezos detected</value>
+  </data>
+  <data name="JeffBezosConfirmation" xml:space="preserve">
+    <value>At least one invoice is for Jeff Bezos. Do you want to continue with printing?</value>
+  </data>
+  <data name="LabelPrinterConfirmation" xml:space="preserve">
+    <value>Are you certain that you want to print invoices on the Label Printer?</value>
+  </data>
+  <data name="PrintingInvoicesCount" xml:space="preserve">
+    <value>Printing {0} invoices</value>
+  </data>
+  <data name="PrintingSummaryOfOrders" xml:space="preserve">
+    <value>Printing summary of {0} orders...</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="GettingOrderDetails" xml:space="preserve">
+    <value>Getting the details of all orders...</value>
+  </data>
+  <data name="AllOrdersUnselected" xml:space="preserve">
+    <value>All orders unselected</value>
+  </data>
+  <data name="OrderSelected" xml:space="preserve">
+    <value>{0} order selected</value>
+  </data>
+  <data name="OrdersSelected" xml:space="preserve">
+    <value>{0} orders selected</value>
+  </data>
+  <data name="FetchingOrders" xml:space="preserve">
+    <value>Fetching Orders...</value>
+  </data>
+  <data name="FetchOrders" xml:space="preserve">
+    <value>Fetch Orders</value>
+  </data>
+  <data name="BootingUp" xml:space="preserve">
+    <value>Booting up</value>
+  </data>
+  <data name="NoLabelsDesignedMessage" xml:space="preserve">
+    <value>No labels designed</value>
+  </data>
+  <data name="LabelManagerDesignRequiredMessage" xml:space="preserve">
+    <value>You need to design at least one label in the Label Manager to be able to print them</value>
+  </data>
+  <data name="ConfirmYourChoice" xml:space="preserve">
+    <value>Confirm your choice</value>
+  </data>
+  <data name="RemoveLabelConfirmationMessage" xml:space="preserve">
+    <value>Are you sure that you want to remove {0}</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="LabelTemplateRemovedMessage" xml:space="preserve">
+    <value>Label template removed</value>
+  </data>
+  <data name="ErrorRemovingLabelTemplateMessage" xml:space="preserve">
+    <value>Error while removing label template</value>
+  </data>
+  <data name="CN22Settings" xml:space="preserve">
+    <value>CN22 Settings</value>
+  </data>
+  <data name="CN22LabelPrinter" xml:space="preserve">
+    <value>CN22 Label Printer</value>
+  </data>
+  <data name="PrintLinesForAllSoldProducts" xml:space="preserve">
+    <value>Print lines for all sold products</value>
+  </data>
+  <data name="PrintLineForOneProduct" xml:space="preserve">
+    <value>Print line for one product</value>
+  </data>
+  <data name="NameOfTheOnlyOneProduct" xml:space="preserve">
+    <value>Name of the only one product</value>
+  </data>
+  <data name="PriceForTheOnlyOneProduct" xml:space="preserve">
+    <value>Price for the only one product</value>
+  </data>
+  <data name="WeightForTheOnlyOneProduct" xml:space="preserve">
+    <value>Weight for the only one product</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="MainCurrency" xml:space="preserve">
+    <value>Main currency</value>
+  </data>
+  <data name="OrderCurrency" xml:space="preserve">
+    <value>Order Currency</value>
+  </data>
+  <data name="Signature" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="SelectFileWithSignature" xml:space="preserve">
+    <value>Select file with signature</value>
+  </data>
+  <data name="ProductsShown" xml:space="preserve">
+    <value>Products shown</value>
+  </data>
+  <data name="Enable4x6LabelPrinter" xml:space="preserve">
+    <value>Enable 4x6" Label Printer</value>
+  </data>
+  <data name="Choose4x6Printer" xml:space="preserve">
+    <value>Choose 4x6" Printer</value>
+  </data>
+  <data name="NoPrintersInstalled" xml:space="preserve">
+    <value>No printers installed</value>
+  </data>
+  <data name="NoPrintersInstalledMessage" xml:space="preserve">
+    <value>There are no printers installed in the system</value>
+  </data>
+  <data name="Disable4x6LabelPrinter" xml:space="preserve">
+    <value>Disable 4x6" Label Printer</value>
+  </data>
+  <data name="NameOfTheSender" xml:space="preserve">
+    <value>Name of the sender</value>
+  </data>
+  <data name="Gift" xml:space="preserve">
+    <value>Gift</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="SaleOfGoods" xml:space="preserve">
+    <value>Sale of Goods</value>
+  </data>
+  <data name="CommercialSample" xml:space="preserve">
+    <value>Commercial Sample</value>
+  </data>
+  <data name="ReturnedGoods" xml:space="preserve">
+    <value>Returned goods</value>
+  </data>
+  <data name="TypeOfContent" xml:space="preserve">
+    <value>Type of content</value>
+  </data>
+  <data name="BusinessNameLabel" xml:space="preserve">
+    <value>Business Name</value>
+  </data>
+  <data name="BusinessAddressLabel" xml:space="preserve">
+    <value>Business Address</value>
+  </data>
+  <data name="IsVATRegisteredLabel" xml:space="preserve">
+    <value>Is VAT Registered</value>
+  </data>
+  <data name="LoadFileWithSignature" xml:space="preserve">
+    <value>Load File with Signature</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="InvalidImageFormat" xml:space="preserve">
+    <value>The selected file is not a valid image format.</value>
+  </data>
+  <data name="PrintCN22Label" xml:space="preserve">
+    <value>Print CN22 Label</value>
+  </data>
+  <data name="LabelPrinter" xml:space="preserve">
+    <value>Label printer</value>
+  </data>
+  <data name="AddNewProductLabelTemplate" xml:space="preserve">
+    <value>Add new product label template</value>
+  </data>
+  <data name="AddNewAddressLabelTemplate" xml:space="preserve">
+    <value>Add new address label template</value>
+  </data>
+  <data name="AddNewReturnLabelTemplate" xml:space="preserve">
+    <value>Add new return label template</value>
+  </data>
+  <data name="TypeOfLabel" xml:space="preserve">
+    <value>Type of label</value>
+  </data>
+  <data name="MultidrawersFont" xml:space="preserve">
+    <value>Multidrawer's font</value>
+  </data>
+  <data name="LocationsFont" xml:space="preserve">
+    <value>Location's font</value>
+  </data>
+  <data name="ProductNameFont" xml:space="preserve">
+    <value>Product Name's font</value>
+  </data>
+  <data name="ProductsMpnFont" xml:space="preserve">
+    <value>Products's mpn's font</value>
+  </data>
+  <data name="HeightInMm" xml:space="preserve">
+    <value>Height in mm</value>
+  </data>
+  <data name="WidthInMm" xml:space="preserve">
+    <value>Width in mm</value>
+  </data>
+  <data name="SpaceBetweenTwoCentralLines" xml:space="preserve">
+    <value>Space between two central lines</value>
+  </data>
+  <data name="BottomMargin" xml:space="preserve">
+    <value>Bottom margin</value>
+  </data>
+  <data name="TopMargin" xml:space="preserve">
+    <value>Top Margin</value>
+  </data>
+  <data name="LandscapeOrientation" xml:space="preserve">
+    <value>Landscape orientation</value>
+  </data>
+  <data name="PrintExample" xml:space="preserve">
+    <value>Print example</value>
+  </data>
+  <data name="DeleteLabel" xml:space="preserve">
+    <value>Delete label</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total amount</value>
+  </data>
+  <data name="ReservedNamesInformation" xml:space="preserve">
+    <value>Names "Return Label" and "Address Label" are reserved for return and address labels</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="LabelNameInUse" xml:space="preserve">
+    <value>{0} name is already in use, please use different name.</value>
+  </data>
+  <data name="LabelNameCannotBeEmpty" xml:space="preserve">
+    <value>Label Name cannot be empty.</value>
+  </data>
+  <data name="TopFontMustBeGreaterThanZero" xml:space="preserve">
+    <value>'Top Font' must be greater than 0.</value>
+  </data>
+  <data name="LargeFontMustBeGreaterThanZero" xml:space="preserve">
+    <value>'Large Font' must be greater than 0.</value>
+  </data>
+  <data name="LesserFontMustBeGreaterThanZero" xml:space="preserve">
+    <value>'Lesser Font' must be greater than 0.</value>
+  </data>
+  <data name="BottomFontMustBeGreaterThanZero" xml:space="preserve">
+    <value>'Bottom Font' must be greater than 0.</value>
+  </data>
+  <data name="HeightMustBeGreaterThanZero" xml:space="preserve">
+    <value>Height must be greater than 0.</value>
+  </data>
+  <data name="HeightInLandscapeOrientation" xml:space="preserve">
+    <value>Height in the landscape orientation must not be greater than 100.</value>
+  </data>
+  <data name="HeightMustNotBeGreaterThan" xml:space="preserve">
+    <value>Height must not be greater than 160.</value>
+  </data>
+  <data name="WidthMustBeGreaterThanZero" xml:space="preserve">
+    <value>Width must be greater than 0.</value>
+  </data>
+  <data name="WidthInLandscapeMode" xml:space="preserve">
+    <value>Width must not be greater than 100 in the landscape mode.</value>
+  </data>
+  <data name="WidthMustNotBeGreaterThan160" xml:space="preserve">
+    <value>Width must not be greater than 160.</value>
+  </data>
+  <data name="CentralLineSpacingMustNotBeNegative" xml:space="preserve">
+    <value>'Central Line Spacing' must not be negative.</value>
+  </data>
+  <data name="BottomMarginMustNotBeNegative" xml:space="preserve">
+    <value>'Bottom Margin' must not be negative.</value>
+  </data>
+  <data name="TopMarginMustNotBeNegative" xml:space="preserve">
+    <value>'Top Margin' must not be negative.</value>
+  </data>
+  <data name="DatabaseAccessError" xml:space="preserve">
+    <value>There has been an error while accessing the database. Would you like to try again?</value>
+  </data>
+  <data name="PrintCopies" xml:space="preserve">
+    <value>Print {0} copies</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="ConfirmPrintLabels" xml:space="preserve">
+    <value>Please confirm that you want to print {0} labels</value>
+  </data>
+  <data name="ChooseLabel" xml:space="preserve">
+    <value>Choose label</value>
+  </data>
+  <data name="ChangeMPN" xml:space="preserve">
+    <value>Change MPN</value>
+  </data>
+  <data name="AssignMPN" xml:space="preserve">
+    <value>Assign MPN</value>
+  </data>
+  <data name="IncorrectSKU" xml:space="preserve">
+    <value>Incorrect SKU</value>
+  </data>
+  <data name="InvalidSKUE ntered" xml:space="preserve">
+    <value>SKU you have entered is invalid</value>
+  </data>
+  <data name="ProductAlreadyAssigned" xml:space="preserve">
+    <value>This product is already assigned to box {0} to location [{1},{2}]</value>
+  </data>
+  <data name="CurrentOrders" xml:space="preserve">
+    <value>Current Orders</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="ParametersTypes" xml:space="preserve">
+    <value>Parameters/Types</value>
+  </data>
+  <data name="Types" xml:space="preserve">
+    <value>Types</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="OrdersBrowser" xml:space="preserve">
+    <value>Orders Browser</value>
+  </data>
+  <data name="ColourBrowser" xml:space="preserve">
+    <value>Colour Browser</value>
+  </data>
+  <data name="MayAlsoFit" xml:space="preserve">
+    <value>May Also Fit</value>
+  </data>
+  <data name="WatchExplorer" xml:space="preserve">
+    <value>Watch Explorer</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="Deliveries" xml:space="preserve">
+    <value>Deliveries</value>
+  </data>
+  <data name="LabelsManager" xml:space="preserve">
+    <value>Labels Manager</value>
+  </data>
+  <data name="BusinessDetails" xml:space="preserve">
+    <value>Business Details</value>
+  </data>
+  <data name="SalesSummary" xml:space="preserve">
+    <value>Sales Summary</value>
+  </data>
+  <data name="InvalidSKUEntered" xml:space="preserve">
+    <value>SKU you have entered is invalid</value>
+  </data>
+  <data name="InitialText" xml:space="preserve">
+    <value>Filter Products</value>
+  </data>
+  <data name="CloseText" xml:space="preserve">
+    <value>Close Filter Menu</value>
+  </data>
+  <data name="PhotoDescription" xml:space="preserve">
+    <value>Photo #{0} of {1}</value>
+  </data>
+  <data name="DownloadingPhotos" xml:space="preserve">
+    <value>Downloading photos</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="ShortName" xml:space="preserve">
+    <value>Short Name</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="LoadPictureWithLogo" xml:space="preserve">
+    <value>Load picture with logo</value>
+  </data>
+  <data name="UploadingLogoPhoto" xml:space="preserve">
+    <value>Uploading logo photo</value>
+  </data>
+  <data name="RefreshingProductDetails" xml:space="preserve">
+    <value>Refreshing product details</value>
+  </data>
+  <data name="LoadPictureOfPackage" xml:space="preserve">
+    <value>Load picture of package</value>
+  </data>
+  <data name="LoadPicture" xml:space="preserve">
+    <value>Load picture</value>
+  </data>
+  <data name="PricePaidExVat" xml:space="preserve">
+    <value>Ex-VAT price paid</value>
+  </data>
+  <data name="PricePaidWithCurrencyExVat" xml:space="preserve">
+    <value>Ex-VAT price paid ({0})</value>
+  </data>
+  <data name="UploadingPhoto" xml:space="preserve">
+    <value>Uploading photo</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="InStockFromAllSuppliers" xml:space="preserve">
+    <value>In stock from all suppliers</value>
+  </data>
+  <data name="MarkupEqualsWithThesePrices" xml:space="preserve">
+    <value>Markup equals{0}with these prices:</value>
+  </data>
+  <data name="UpdatingData" xml:space="preserve">
+    <value>Updating data</value>
+  </data>
+  <data name="ProductAddedTitle" xml:space="preserve">
+    <value>Product added</value>
+  </data>
+  <data name="ProductAddedMessage" xml:space="preserve">
+    <value>Product {0} added</value>
+  </data>
+  <data name="ErrorValidatingTitle" xml:space="preserve">
+    <value>Error validating</value>
+  </data>
+  <data name="ErrorValidatingMessage" xml:space="preserve">
+    <value>{0} should be a numeric value</value>
+  </data>
+  <data name="ProductNameExists" xml:space="preserve">
+    <value>A product with this name already exists: {0}</value>
+  </data>
+  <data name="ProductShortNameExists" xml:space="preserve">
+    <value>An object with this short name already exists: {0}</value>
+  </data>
+  <data name="ProductMpnExists" xml:space="preserve">
+    <value>An object with this MPN already exists: {0}</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>An unknown error occurred.</value>
+  </data>
+  <data name="UpdatingNumbersOnMarkets" xml:space="preserve">
+    <value>Updating numbers on markets</value>
+  </data>
+  <data name="SaveImageFile" xml:space="preserve">
+    <value>Save Image file</value>
+  </data>
+  <data name="CustomDateRange" xml:space="preserve">
+    <value>Custom Date Range</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="LastQuarter" xml:space="preserve">
+    <value>Last Quarter</value>
+  </data>
+  <data name="ChooseStartMonth" xml:space="preserve">
+    <value>Choose the month your financial year starts</value>
+  </data>
+  <data name="LastFinancialYear" xml:space="preserve">
+    <value>Last Financial Year</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>January</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>February</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>March</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>October</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="UK" xml:space="preserve">
+    <value>UK</value>
+  </data>
+  <data name="EU" xml:space="preserve">
+    <value>EU</value>
+  </data>
+  <data name="EUPlus" xml:space="preserve">
+    <value>EU+Iceland+Norway+Switzerland+Liechtenstein</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>World</value>
+  </data>
+  <data name="WhichMarketsToInclude" xml:space="preserve">
+    <value>Which markets to include</value>
+  </data>
+  <data name="WhichCountriesToInclude" xml:space="preserve">
+    <value>Which countries to include</value>
+  </data>
+  <data name="GenerateData" xml:space="preserve">
+    <value>Generate Data</value>
+  </data>
+  <data name="GenerateCSVFile" xml:space="preserve">
+    <value>Generate CSV File</value>
+  </data>
+  <data name="GenerateCharts" xml:space="preserve">
+    <value>Generate Charts</value>
+  </data>
+  <data name="EntireRecordedPeriod" xml:space="preserve">
+    <value>Entire Recorded Period</value>
+  </data>
+  <data name="DateRangeError" xml:space="preserve">
+    <value>The start date must be earlier than the end date. Currently, the start date is {0}, and the end date is {1}. Please correct the date range to generate the sales report for the specified period.</value>
+  </data>
+  <data name="SelectTaxYearStartMonth" xml:space="preserve">
+    <value>You must select the month in which your tax year starts</value>
+  </data>
+  <data name="AddCountry" xml:space="preserve">
+    <value>Add Country</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="SelectCountryOrGroup" xml:space="preserve">
+    <value>Please select at least one country or group of countries from the list</value>
+  </data>
+  <data name="CountryAlreadyAdded" xml:space="preserve">
+    <value>Country {0} is already added to the list</value>
+  </data>
+  <data name="CompareSalesCountries" xml:space="preserve">
+    <value>Compare sales in selected countries (select country or group of countries)</value>
+  </data>
+  <data name="CompareSalesPlatforms" xml:space="preserve">
+    <value>Compare sales on selected marketplaces (select marketplace or group of marketplaces)</value>
+  </data>
+  <data name="AddMarketplace" xml:space="preserve">
+    <value>Add Marketplace</value>
+  </data>
+  <data name="ShowNetPrices" xml:space="preserve">
+    <value>Show net prices (indicated when sales consist of net and gross prices)</value>
+  </data>
+  <data name="DisplayMovingAverage" xml:space="preserve">
+    <value>Display moving average overlaid on exact results</value>
+  </data>
+  <data name="LineChart" xml:space="preserve">
+    <value>Line Chart</value>
+  </data>
+  <data name="PieChart" xml:space="preserve">
+    <value>Pie Chart</value>
+  </data>
+  <data name="Legend" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="CloseWindow" xml:space="preserve">
+    <value>Close Window</value>
+  </data>
+  <data name="DataRetrievedSuccess" xml:space="preserve">
+    <value>Data successfully retrieved. Now you can display it as a chart, or save it as a CSV file</value>
+  </data>
+  <data name="Back7Days" xml:space="preserve">
+    <value>Back 7 Days</value>
+  </data>
+  <data name="Forward7Days" xml:space="preserve">
+    <value>Forward 7 Days</value>
+  </data>
+  <data name="TotalOrderCount" xml:space="preserve">
+    <value>Total Number of Orders</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Customer name</value>
+  </data>
+  <data name="Marketplace" xml:space="preserve">
+    <value>Marketplace</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="OrderDate" xml:space="preserve">
+    <value>Paid on</value>
+  </data>
+  <data name="EnterNameToSearch" xml:space="preserve">
+    <value>Enter name to search for products</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Assigned" xml:space="preserve">
+    <value>Assigned</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Tracked" xml:space="preserve">
+    <value>Tracked</value>
+  </data>
+  <data name="SaveProductDetails" xml:space="preserve">
+    <value>Save product details</value>
+  </data>
+  <data name="TurnTrackOnOff" xml:space="preserve">
+    <value>Turn tracking on/off</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="PrintLabel" xml:space="preserve">
+    <value>Print label</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="AssignNewSupplier" xml:space="preserve">
+    <value>Assign new supplier</value>
+  </data>
+  <data name="AddSupplier" xml:space="preserve">
+    <value>Add supplier</value>
+  </data>
+  <data name="RemoveSupplier" xml:space="preserve">
+    <value>Remove supplier</value>
+  </data>
+  <data name="AddMarket" xml:space="preserve">
+    <value>Add Market</value>
+  </data>
+  <data name="UploadPhotoWithLogo" xml:space="preserve">
+    <value>Upload Photo with Logo</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="UploadPhotoOfPackage" xml:space="preserve">
+    <value>Upload Photo of Package</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>Move Up</value>
+  </data>
+  <data name="AddPhoto" xml:space="preserve">
+    <value>Add Photo</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EssentialValues" xml:space="preserve">
+    <value>Essential Values</value>
+  </data>
+  <data name="SoldOnMarkets" xml:space="preserve">
+    <value>Sold on markets</value>
+  </data>
+  <data name="PhotoWithLogo" xml:space="preserve">
+    <value>Photo with Logo</value>
+  </data>
+  <data name="PhotoOfThePackage" xml:space="preserve">
+    <value>Photo of the Package</value>
+  </data>
+  <data name="Photos" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="RegularPhotos" xml:space="preserve">
+    <value>Regular Photos</value>
+  </data>
+  <data name="AddProduct" xml:space="preserve">
+    <value>Add Product</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="FillAllFields" xml:space="preserve">
+    <value>Please fill all fields, correctly</value>
+  </data>
+  <data name="ObjectNameExists" xml:space="preserve">
+    <value>An object with this name {0} already exists.</value>
+  </data>
+  <data name="ObjectShortNameExists" xml:space="preserve">
+    <value>An object with this short name {0} already exists.</value>
+  </data>
+  <data name="ObjectMPNExists" xml:space="preserve">
+    <value>An object with this MPN {0} already exists.</value>
+  </data>
+  <data name="UpdateQuantitiesOnMarketplaces" xml:space="preserve">
+    <value>Update Quantities on Marketplaces</value>
+  </data>
+  <data name="SyncQuantityWithSalesPlatforms" xml:space="preserve">
+    <value>Syncing quantites with marketplaces</value>
+  </data>
+  <data name="NoNewOrders" xml:space="preserve">
+    <value>No new orders to download</value>
+  </data>
+  <data name="FetchingOnlyOrders" xml:space="preserve">
+    <value>Fetching {0} orders from the database</value>
+  </data>
+  <data name="MarketplaceAssociationNotInUse" xml:space="preserve">
+    <value>Association with marketplace not in use</value>
+  </data>
+  <data name="UnknownMarketplace" xml:space="preserve">
+    <value>Unknown marketplace</value>
+  </data>
+  <data name="UnknownSellingPlatform" xml:space="preserve">
+    <value>Unknown selling platform</value>
+  </data>
+  <data name="CannotConnectEbay" xml:space="preserve">
+    <value>Cannot establish connection with eBay server</value>
+  </data>
+  <data name="QuantitySameRevisionSkipped" xml:space="preserve">
+    <value>Quantity on eBay is the same as new quantity - revision skipped</value>
+  </data>
+  <data name="EbayConfirmationResponse" xml:space="preserve">
+    <value>eBay returned confirmation response</value>
+  </data>
+  <data name="LeavingFeedbackForOrders" xml:space="preserve">
+    <value>Leaving feedback for {0} order(s)</value>
+  </data>
+  <data name="FetchedDataForFeedback" xml:space="preserve">
+    <value>Fetched all data needed to leave feedback for all orders, attempting to do that now</value>
+  </data>
+  <data name="FeedbackLeftSuccess" xml:space="preserve">
+    <value>Feedback for item ({0}) {1} out of {2} left successfully</value>
+  </data>
+  <data name="FeedbackLeftFailed" xml:space="preserve">
+    <value>Failed to leave feedback for item {0} out of {1}, item id: {2}, transaction id: {3} from buyer {4}</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ConfirmCancelOperation" xml:space="preserve">
+    <value>Are you sure you want to cancel the operation?</value>
+  </data>
+  <data name="OperationCompletedBeforeCancel" xml:space="preserve">
+    <value>Operation was completed before the cancelation was executed</value>
+  </data>
+  <data name="PricePaidWithCurrencyIncVat" xml:space="preserve">
+    <value>Price ({0}) including VAT </value>
+  </data>
+  <data name="ConfirmValue" xml:space="preserve">
+    <value>Confirm Value</value>
+  </data>
+  <data name="ERRORDecimalNumberIncorrect" xml:space="preserve">
+    <value>The entered value is not a valid decimal number.</value>
+  </data>
+  <data name="ERRORNumberMustBeGreaterThanZero" xml:space="preserve">
+    <value>The number must be greater than zero.</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Order by</value>
+  </data>
+  <data name="Printer" xml:space="preserve">
+    <value>Printer</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="AddToQuickBooks" xml:space="preserve">
+    <value>Add to QuickBooks</value>
+  </data>
+  <data name="RemoveFromQuickBooks" xml:space="preserve">
+    <value>Remove from QuickBooks</value>
+  </data>
+</root>

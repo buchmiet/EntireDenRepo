@@ -1,0 +1,130 @@
+<UserControl x:Class="StorageExplorerMVVM.StorageExplorerUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:StorageExplorerMVVM"
+              xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+            
+                 xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=vm:StorageExplorerViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+   
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+  
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Cupboards:" Grid.Column="0">
+                <DataGrid Margin="3" DockPanel.Dock="Bottom" x:Name="multidrawery" AutoGenerateColumns="False" CanUserAddRows="False"
+                      ItemsSource="{Binding MultiDrawery}" 
+                      SelectedItem="{Binding SelectedItem}" IsEnabled="{Binding NotIsCupboardBeingCreated}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding MultiDrawerySelectionChangedCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" IsReadOnly="True" Width="SizeToCells" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Dimensions" IsReadOnly="True" Width="SizeToheader" Binding="{Binding Dims}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+
+            <StackPanel Margin="3" Grid.Column="1">
+                <Button Margin="3" x:Name="x1" Command="{Binding AddNewCCommand}" IsEnabled="{Binding NotIsCupboardBeingCreated}">Add new cupboard</Button>
+                <Button Margin="3" x:Name="x2"  Command="{Binding RencupCommand}" IsEnabled="{Binding IsCupboardSelected}">Rename cupboard</Button>
+                <Button Margin="3" IsEnabled="{Binding AddSeveralIsEnabled}" Command="{Binding AddSevCommand}">Add Several</Button>
+                <Button Margin="3" IsEnabled="{Binding IsCupboardSelected}" x:Name="printcup" Command="{Binding PrintcupCommand}">Print all labels in this cupboard</Button>
+      
+                <Button Margin="3" IsEnabled="{Binding IsCupboardSelected}" x:Name="remcup" Command="{Binding RemcupCommand}">Remove cupboard</Button>
+              
+            </StackPanel>
+            <!---->
+           
+            <Grid Margin="3" Grid.Column="2"  Visibility="{Binding IsCupboardBeingCreated,Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                    <Label Grid.Row="0" Margin="3" x:Name="informacja" FontSize="16" Content="{Binding Informacja}"></Label>
+                 
+               
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <ItemsControl ItemsSource="{Binding Cells}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="30" Columns="10"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <shared:MouseControl MouseEnterCommand="{Binding MouseEnterCommand}" 
+                             MouseLeftButtonDownCommand="{Binding MouseLeftButtonDownCommand}">
+                                        <Border Width="30" Height="20" BorderBrush="Black" BorderThickness="0.5" Background="{Binding BackgroundColor}"/>
+                                    </shared:MouseControl>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                    <UniformGrid Rows="2" Grid.Column="1" Margin="3">
+                    <StackPanel Orientation="Vertical" >
+                    <TextBlock Text="Projected size:"/>
+                        <TextBlock FontSize="20" Text="{Binding ProjSize}"/>
+                    </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Click Left Mouse Button at any time or press " VerticalAlignment="Center"></TextBlock>
+                            <Button x:Name="x3" VerticalAlignment="Center" Margin="0" Padding="3" Command="{Binding CancelDrawerCreationCommand}">Cancel</Button>
+                            <TextBlock Text=" here to abort" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </UniformGrid >
+                </Grid>
+            </Grid>
+            <StackPanel Grid.Column="2" Margin="3" Orientation="Vertical" Visibility="{Binding IsCupboardSelected,Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TextBlock FontSize="16" >Click on a box to assign or change product or to print labels</TextBlock>
+            <Grid Margin="5" >
+             
+                <ItemsControl ItemsSource="{Binding BoxViewModels}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="{Binding SelectedItem.Rows}" Columns="{Binding SelectedItem.Columns}"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                                <Button Content="{Binding ButtonName}" Margin="1" Command="{Binding ButtonCommand}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Grid.Row" Value="{Binding Body.row}" />
+                            <Setter Property="Grid.Column" Value="{Binding Body.column}" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </ItemsControl>
+            </Grid>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+
+
+</UserControl>

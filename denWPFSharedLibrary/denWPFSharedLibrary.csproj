@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ColoursOperations\ColoursOperations.csproj" />
+    <ProjectReference Include="..\denLanguageResourses\denLanguageResourses.csproj" />
+    <ProjectReference Include="..\denModels\denModels.csproj" />
+    <ProjectReference Include="..\denSharedLibrary\denSharedLibrary.csproj" />
+    <ProjectReference Include="..\denViewModels\denViewModels.csproj" />
+  </ItemGroup>
+
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+    <Compile Update="ActiveBorderListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ActiveButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ConnectionTimeoutWarningWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

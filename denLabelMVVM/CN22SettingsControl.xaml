@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="denLabelMVVM.CN22SettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:denLabelMVVM"
+               xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+               xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+                xmlns:res="clr-namespace:denLanguageResourses;assembly=denLanguageResourses" xmlns:denviewmodels="clr-namespace:denViewModels;assembly=denViewModels" d:DataContext="{d:DesignInstance Type=denviewmodels:Cn22SettingsViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <shared:NotBooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter" />
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <shared:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
+        <shared:PrintLinesToBoolConverter x:Key="PrintLinesToBoolConverter"/>
+        <shared:DisplayedCurrencyToBoolConverter x:Key="DisplayedCurrencyToBoolConverter"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+    <Grid>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Margin="3" Grid.Row="0">
+                <Button  HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Show4X6SettingsCommand}" Margin="3" IsEnabled="{Binding IsReady}">
+                    <TextBlock Text="{Binding EnableLargePrinterMenuButton}" Margin="3"></TextBlock>
+                </Button>
+            </Grid>
+
+            <UniformGrid Columns="2" Grid.Row="1" Visibility="{Binding LargePrintersMenuEnabled,Converter={StaticResource BooleanToVisibilityConverter}}">
+            <StackPanel Orientation="Vertical">
+                    <UniformGrid>
+                        <TextBlock Text="{x:Static res:Resources.CN22LabelPrinter}" VerticalAlignment="Center" Margin="5"/>
+                        <ComboBox x:Name="Cn22LabelPrinterComboBox" VerticalAlignment="Center" Margin="5" ItemsSource="{Binding LargePrinters}" SelectedItem="{Binding SelectedLargePrinter, Mode=TwoWay}" />
+                    </UniformGrid>
+                    <UniformGrid>
+                        <TextBlock Text="{x:Static res:Resources.ProductsShown}" VerticalAlignment="Center" Margin="5"/>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Margin="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"
+             Content="{x:Static res:Resources.PrintLinesForAllSoldProducts}" GroupName="ProductsGroup"
+             IsChecked="{Binding PrintLines, Converter={StaticResource PrintLinesToBoolConverter}, ConverterParameter=ForAllSoldProducts}"/>
+                            <RadioButton Margin="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+             Content="{x:Static res:Resources.PrintLineForOneProduct}" GroupName="ProductsGroup"
+             IsChecked="{Binding PrintLines, Converter={StaticResource PrintLinesToBoolConverter}, ConverterParameter=ForOneProduct}"/>
+
+                        </Grid>
+                    </UniformGrid>
+                    <UniformGrid >
+                        <TextBlock Text="{x:Static res:Resources.NameOfTheSender}" VerticalAlignment="Center" Margin="5"/>
+                        <TextBox VerticalAlignment="Center" Margin="5" Text="{Binding NameOfTheSender, UpdateSourceTrigger=PropertyChanged}"/>
+                    </UniformGrid>
+                    <UniformGrid>
+                        <TextBlock Text="{x:Static res:Resources.TypeOfContent}" VerticalAlignment="Center" Margin="5"/>
+                        <ComboBox  ItemsSource="{Binding Cn22Content}"  SelectedItem="{Binding SelectedContentType, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+                    </UniformGrid>
+                    <UniformGrid Visibility="{Binding PrintLineForOneProduct, Converter={StaticResource BooleanToVisibilityConverter} }">
+                        <TextBlock Text="{x:Static res:Resources.NameOfTheOnlyOneProduct}" VerticalAlignment="Center" Margin="5"/>
+                        <TextBox VerticalAlignment="Center" Margin="5" Text="{Binding NameOfTheOnlyOneProduct, UpdateSourceTrigger=PropertyChanged}"/>
+                    </UniformGrid>
+                   
+                    <UniformGrid Visibility="{Binding PrintLineForOneProduct, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <TextBlock Text="{x:Static res:Resources.PriceForTheOnlyOneProduct}" VerticalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="PriceForTheOnlyOneProductTextBox" VerticalAlignment="Center" Margin="5" Text="{Binding PriceForTheOnlyOneProduct, UpdateSourceTrigger=PropertyChanged}"/>
+                    </UniformGrid>
+                    <UniformGrid Visibility="{Binding PrintLineForOneProduct, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <TextBlock Text="{x:Static res:Resources.WeightForTheOnlyOneProduct}" VerticalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="WeightForTheOnlyOneProductTextBox" VerticalAlignment="Center" Margin="5" Text="{Binding WeightForTheOnlyOneProduct, UpdateSourceTrigger=PropertyChanged}"/>
+                    </UniformGrid>
+                    <UniformGrid>
+                        <TextBlock Text="{x:Static res:Resources.Currency}" VerticalAlignment="Center" Margin="5"/>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Margin="5" Grid.Column="0" HorizontalAlignment="Center"
+             Content="{x:Static res:Resources.MainCurrency}" GroupName="CurrencyGroup"
+             IsChecked="{Binding DisplayedCurrency, Converter={StaticResource DisplayedCurrencyToBoolConverter}, ConverterParameter=MainCurrency}"/>
+                            <RadioButton Margin="5" Grid.Column="1" HorizontalAlignment="Center"
+             Content="{x:Static res:Resources.OrderCurrency}" GroupName="CurrencyGroup"
+             IsChecked="{Binding DisplayedCurrency, Converter={StaticResource DisplayedCurrencyToBoolConverter}, ConverterParameter=OrderCurrency}"/>
+                        </Grid>
+                    </UniformGrid>
+                    <UniformGrid>
+                        <TextBlock Text="{x:Static res:Resources.Signature}" VerticalAlignment="Center" Margin="5"/>
+                        <UniformGrid>
+                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding UseSignatureFile}"></CheckBox>
+                            <Button Content="{x:Static res:Resources.SelectFileWithSignature}" VerticalAlignment="Center" Margin="5" Visibility="{Binding UseSignatureFile, Converter={StaticResource BooleanToVisibilityConverter}}" Command="{Binding LoadSignatureFileCommand}"/>
+                        </UniformGrid>
+                    </UniformGrid>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3">
+                    <Button Content="{x:Static res:Resources.PrintCN22Label}" Command="{Binding PrintCn22Command}" Margin="3">
+                    </Button>
+                    </Grid>
+                    <Border BorderBrush="LightGray" BorderThickness="2" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="{Binding Image, Converter={StaticResource ByteArrayToImageConverter}}" Stretch="Uniform"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="{Binding ImageWidth}" Height="{Binding ImageHeight}"/>
+                    </Border>
+                   
+                </StackPanel>
+                
+               
+            </UniformGrid>
+    </Grid>
+    </ScrollViewer>
+</UserControl>

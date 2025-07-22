@@ -1,0 +1,194 @@
+<UserControl x:Class="OrdBroMVVM.OrdBroUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:denViewModels;assembly=denViewModels"
+                 xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+                xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=vm:OrdBroViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"   >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <shared:NullToVisibilityConverter x:Key="NullToVisibilityConverter" /> 
+        <shared:NotBooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+          
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Margin="3" Text="{Binding SearchInput, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding OrdersIn}"></TextBox>
+                    <Label Grid.Column="1" Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">Loading orders</Label>
+
+                    <Grid Grid.Column="2" x:Name="progresik" Margin="3">
+                        <ProgressBar Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"  IsIndeterminate="True"/>
+                        <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="iloscorderow"/>
+                    </Grid>
+
+
+                    <Label Grid.Column="2" x:Name="MainStatus" Visibility="Collapsed"></Label>
+                </Grid>
+
+                <DataGrid Grid.Row="1"  AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding OrdersView}" SelectionMode="Single" IsEnabled="{Binding IsDataLoaded}" Margin="3">
+                    <i:Interaction.Behaviors>
+                        <shared:SelectionChangedCommandBehavior Command="{Binding RowClickCommand}"/>
+                    </i:Interaction.Behaviors>
+
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Status}" Value='New Order'>
+                                    <Setter Property="Background" Value="FloralWhite"></Setter>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding Status}" Value='Shipped'>
+                                    <Setter Property="Background" Value="White"></Setter>
+                                </DataTrigger>
+
+                            </Style.Triggers>
+                        </Style>
+
+
+                    </DataGrid.RowStyle>
+
+
+
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  IsReadOnly="True" Header="No" Width="SizeToHeader" Binding="{Binding Number, FallbackValue=''}"/>
+                        <DataGridTextColumn  IsReadOnly="True" Header="1st Item" Width="*" Binding="{Binding Item, FallbackValue=''}"/>
+                        <DataGridTextColumn  IsReadOnly="True" Header="Buyer" Width="*" Binding="{Binding Buyer, FallbackValue=''}"/>
+                        <DataGridTextColumn Header="Bought on" Width="SizeToCells" Binding="{Binding PaidOn, FallbackValue=''}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Status" Width="SizeToCells" Binding="{Binding Status, FallbackValue=''}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Country" Width="SizeToCells" Binding="{Binding Country, FallbackValue=''}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+            <ScrollViewer Grid.Column="1" Visibility="{Binding SelectedItem, Converter={StaticResource NullToVisibilityConverter}}" >
+                <StackPanel IsEnabled="{Binding OrderCanBeEdited}">
+
+                    <UniformGrid Rows="1">
+                        <Label>Order Id</Label>
+                        <TextBlock x:Name="tb1" Background="Transparent" Text="{Binding DisplayedOrderId}" /> 
+                    </UniformGrid>
+                    <UniformGrid Rows="1">
+                        <Label>Market</Label>
+                        <TextBlock x:Name="tb2" Background="Transparent" Text="{Binding DisplayedMarket}" />
+                    </UniformGrid>
+                    <UniformGrid Rows="1">
+                        <Label>Order no:</Label>
+                        <TextBox x:Name="LordNo" Text="{Binding LordNo}" IsReadOnly="True" ></TextBox>
+                    </UniformGrid>
+
+                    <shared:ActiveBorderListView ItemsSource="{Binding OrderGeneralItems}" Column1Width="5*" Column2Width="5*" ChangedBorderColor="Green"/>
+
+             
+
+                    <shared:ActiveButton ButtonContent="Save Order Details" 
+                            IsButtonEnabled="{Binding AreAnyOrderGeneralItemsModified}" 
+                            ButtonCommand="{Binding SaveOrderCommand}" />
+                    <Button Margin="3"   Command="{Binding PrintLabelCommand}">Print Address</Button>
+                    <Button Margin="3"   Command="{Binding PrintInvoiceCommand}">Print Invoice</Button>
+                    <Button Margin="3"   Command="{Binding Add2QuickBooksCommand}" IsEnabled="{Binding IsNotQuickBooked}">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Add2QBButtonText}" />
+                            <ProgressBar Visibility="{Binding Add2QBProgressBarVisibility,Converter={StaticResource BooleanToVisibilityConverter}}"  IsIndeterminate="True" x:Name="tb3" />
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Margin="3"   Command="{Binding Remove4QuickBooksCommand}" IsEnabled="{Binding IsQuickBooked}">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Remove4QBButtonText}" />
+                            <ProgressBar Visibility="{Binding Remove4QBProgressBarVisibility,Converter={StaticResource BooleanToVisibilityConverter}}"  IsIndeterminate="True" x:Name="tb4"/>
+                        </StackPanel>
+                    </Button>
+                    <UniformGrid Columns="2" Visibility="{Binding IsQuickBooked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Label Content="Synchronize Postage price with QB" 
+           HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3"/>
+
+                        <ToggleButton Content="{Binding SyncWithQbButtonText}" IsChecked="{Binding SyncWithQb}" 
+                  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="3" />
+                    </UniformGrid>
+                    <GroupBox Header="Products in the order:" >
+                        <DataGrid  AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="None" ItemsSource="{Binding ItemViewItems}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseUp">
+                                    <i:InvokeCommandAction Command="{Binding ProductRowClickCommand}" 
+                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=SelectedItem}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn   IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                                <DataGridTextColumn   IsReadOnly="True" Width="auto" Binding="{Binding Mpn}"/>
+                                <DataGridTextColumn   IsReadOnly="True" Width="auto" Binding="{Binding Quantity}"/>
+                                <DataGridTextColumn   IsReadOnly="True" Width="auto" Binding="{Binding Price}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                    <StackPanel Name="regCust" Visibility="{Binding ItIsAmazonCustomer, Converter={StaticResource NotBooleanToVisibilityConverter}}">
+                       <GroupBox Header="Customer" VerticalAlignment="Stretch">
+                            <StackPanel>
+                                <shared:ActiveBorderListView ItemsSource="{Binding RegCustomerDetails}" Column1Width="3*" Column2Width="7*" ChangedBorderColor="Green"/>
+                                <shared:ActiveButton ButtonContent="Save Customer Details" 
+                            IsButtonEnabled="{Binding AreAnyCustomerDetailsModified}" 
+                            ButtonCommand="{Binding SaveCustomerCommand}" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Header="Address"  >
+                            <StackPanel >
+
+                                <shared:ActiveBorderListView ItemsSource="{Binding RegCustomerBillAddr}" Column1Width="3*" Column2Width="7*" ChangedBorderColor="Green"/>
+                                <shared:ActiveButton ButtonContent="Save Address Details" 
+                            IsButtonEnabled="{Binding AreAnyRegCustomerBillAddrModified}" 
+                            ButtonCommand="{Binding SaveAddressCommand}" />
+                            
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+
+                    <StackPanel Name="AmazonCust" Visibility="{Binding ItIsAmazonCustomer, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <GroupBox Header="Customer">
+                            <StackPanel>
+
+                                <shared:ActiveBorderListView ItemsSource="{Binding AmCustomerDetails}" Column1Width="3*" Column2Width="7*" ChangedBorderColor="Green"/>
+                                <shared:ActiveButton ButtonContent="Save Customer Details" 
+                            IsButtonEnabled="{Binding AreAnyAmazonCustomerDetailsModified}" 
+                            ButtonCommand="{Binding SaveAmazonDetailsCommand}" />
+
+                              
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+
+
+   
+</UserControl>

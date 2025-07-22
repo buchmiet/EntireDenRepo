@@ -1,0 +1,34 @@
+﻿<Window x:Class="ProBroMVVM.LaunchTrackingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ProBroMVVM"
+        mc:Ignorable="d"
+        Title="Prepare quantities" Height="450" Width="800"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <DockPanel>
+            <GroupBox Header="Set quantities before tracking" DockPanel.Dock="Top">
+
+                <ItemsControl ItemsSource="{Binding ItemQuantities}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <UniformGrid Columns="3" VerticalAlignment="Top">
+                                <Label Content="{Binding Idname.Name}"/>
+                                <Label/>
+                                <TextBox Text="{Binding Quantity, Mode=TwoWay}"/>
+                            </UniformGrid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </GroupBox>
+            <UniformGrid Columns="3" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Margin="3">
+                <Button Command="{Binding CancelCommand}">Cancel</Button>
+                <Label/>
+                <Button Command="{Binding OkCommand}">Confirm</Button>
+            </UniformGrid>
+        </DockPanel>
+    </Grid>
+</Window>

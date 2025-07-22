@@ -1,0 +1,122 @@
+﻿<Window x:Class="StorageExplorerMVVM.AddSeveralWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+           xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+        xmlns:vm="clr-namespace:StorageExplorerMVVM" d:DataContext="{d:DesignInstance Type=vm:AddSeveralViewModel}"
+             xmlns:res="clr-namespace:denLanguageResourses;assembly=denLanguageResourses"
+        mc:Ignorable="d"
+        Title="Add Several Products to a cupboard" Height="450" Width="800" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <UniformGrid Columns="1">
+                    <GroupBox Header="Enter subsequent Casio MPNs below and press [ENTER] to confirm" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBox  Grid.Row="0" Margin="5" Background="Black" Foreground="Red" FontFamily="{Binding Digital7}" MaxLines="1" FontSize="62" 
+                                      Text="{Binding BrokenLcd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                                <i:Interaction.Behaviors>
+                                    <shared:EnterKeyCommandBehavior EnterCommand="{Binding EnterCommand}" />
+                                </i:Interaction.Behaviors>
+
+                            </TextBox>
+
+                            <DockPanel Grid.Row="1">
+                                <Label>Current MPN:</Label>
+                                <TextBlock x:Name="currentBody" VerticalAlignment="Center" Text="{Binding CurrentBody}"></TextBlock>
+                            </DockPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <CheckBox x:Name="refresher" IsChecked="{Binding IsRefresherChecked}" VerticalAlignment="Center"></CheckBox>
+                                <Label VerticalAlignment="Center">[ENTER] Prints entered labels number of times given below</Label>
+                            </StackPanel>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Margin="3" Text="{x:Static res:Resources.ChooseLabel}"/>
+
+                                <ItemsControl ItemsSource="{Binding LabelProps}" Grid.Column="1">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <RadioButton Content="{Binding Name}" IsChecked="{Binding Tick}">
+                                                <RadioButton.Command>
+                                                    <Binding Path="DataContext.RadioButtonCommand" RelativeSource="{RelativeSource AncestorType={x:Type ItemsControl}}"/>
+                                                </RadioButton.Command>
+                                                <RadioButton.CommandParameter>
+                                                    <Binding Path="Content" RelativeSource="{RelativeSource Self}"/>
+                                                </RadioButton.CommandParameter>
+                                            </RadioButton>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                    
+                        </Grid>
+                    </GroupBox>
+
+                    <UniformGrid Columns="1" Grid.Row="0">
+                        <UniformGrid Rows="1">
+                            <Button Margin="5" Command="{Binding s}">
+                                <TextBlock TextAlignment="Center">🖶 🖶 🖶<LineBreak/>PRINT <LineBreak/>LABELS FOR ALL <LineBreak/>PRODUCTS FROM THE LIST</TextBlock>
+                            </Button>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label>Amount of labels to be printed:</Label>
+                            <UniformGrid Grid.Row="1" Rows="1" Margin="5">
+                                <Button x:Name="MINUS" Margin="5" Command="{Binding MinusClickCommand}"  >-</Button>
+                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding PrintTimes}"></TextBlock>
+                                <Button x:Name="PLUS"  Margin="5" Command="{Binding PlusClickCommand}">+</Button>
+                            </UniformGrid>
+                            </Grid>
+                        </UniformGrid>
+
+                     
+                    </UniformGrid>
+                </UniformGrid>
+
+               
+            </Grid>
+
+            <GroupBox Grid.Column="1" Header="CURRENT MPNs">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <ListView  Grid.Row="1" Margin="5" ItemsSource="{Binding Items}"></ListView>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+
+</Window>

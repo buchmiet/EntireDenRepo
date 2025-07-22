@@ -1,0 +1,1157 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>t4p.ico</ApplicationIcon>
+    <PlatformTarget>x64</PlatformTarget>
+    <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\1.gif" />
+    <None Remove="Data\2.gif" />
+    <None Remove="Data\3.gif" />
+    <None Remove="Data\4.gif" />
+    <None Remove="Data\45.gif" />
+    <None Remove="Data\6.gif" />
+    <None Remove="Data\7.gif" />
+    <None Remove="Data\camo.gif" />
+    <None Remove="Data\cn22.png" />
+    <None Remove="Data\ConsoleThemes.xml" />
+    <None Remove="Data\d7.ttf" />
+    <None Remove="Data\denDig.ico" />
+    <None Remove="Data\flags\AB.png" />
+    <None Remove="Data\flags\AD.png" />
+    <None Remove="Data\flags\AE.png" />
+    <None Remove="Data\flags\AF.png" />
+    <None Remove="Data\flags\AG.png" />
+    <None Remove="Data\flags\AI.png" />
+    <None Remove="Data\flags\AL.png" />
+    <None Remove="Data\flags\AM.png" />
+    <None Remove="Data\flags\AN.png" />
+    <None Remove="Data\flags\AO.png" />
+    <None Remove="Data\flags\AR.png" />
+    <None Remove="Data\flags\AS.png" />
+    <None Remove="Data\flags\AT.png" />
+    <None Remove="Data\flags\AU.png" />
+    <None Remove="Data\flags\AW.png" />
+    <None Remove="Data\flags\AZ.png" />
+    <None Remove="Data\flags\BA.png" />
+    <None Remove="Data\flags\BB.png" />
+    <None Remove="Data\flags\BD.png" />
+    <None Remove="Data\flags\BE.png" />
+    <None Remove="Data\flags\BF.png" />
+    <None Remove="Data\flags\BG.png" />
+    <None Remove="Data\flags\BH.png" />
+    <None Remove="Data\flags\BI.png" />
+    <None Remove="Data\flags\BJ.png" />
+    <None Remove="Data\flags\BM.png" />
+    <None Remove="Data\flags\BN.png" />
+    <None Remove="Data\flags\BO.png" />
+    <None Remove="Data\flags\BR.png" />
+    <None Remove="Data\flags\BS.png" />
+    <None Remove="Data\flags\BT.png" />
+    <None Remove="Data\flags\BW.png" />
+    <None Remove="Data\flags\BY.png" />
+    <None Remove="Data\flags\BZ.png" />
+    <None Remove="Data\flags\CA.png" />
+    <None Remove="Data\flags\CD.png" />
+    <None Remove="Data\flags\CF.png" />
+    <None Remove="Data\flags\CH.png" />
+    <None Remove="Data\flags\CI.png" />
+    <None Remove="Data\flags\CK.png" />
+    <None Remove="Data\flags\CL.png" />
+    <None Remove="Data\flags\CM.png" />
+    <None Remove="Data\flags\CN.png" />
+    <None Remove="Data\flags\CO.png" />
+    <None Remove="Data\flags\CR.png" />
+    <None Remove="Data\flags\CV.png" />
+    <None Remove="Data\flags\CY.png" />
+    <None Remove="Data\flags\CZ.png" />
+    <None Remove="Data\flags\DE.png" />
+    <None Remove="Data\flags\DJ.png" />
+    <None Remove="Data\flags\DK.png" />
+    <None Remove="Data\flags\DM.png" />
+    <None Remove="Data\flags\DO.png" />
+    <None Remove="Data\flags\DZ.png" />
+    <None Remove="Data\flags\EC.png" />
+    <None Remove="Data\flags\EE.png" />
+    <None Remove="Data\flags\EG.png" />
+    <None Remove="Data\flags\ES.png" />
+    <None Remove="Data\flags\ET.png" />
+    <None Remove="Data\flags\FI.png" />
+    <None Remove="Data\flags\FJ.png" />
+    <None Remove="Data\flags\FO.png" />
+    <None Remove="Data\flags\FR.png" />
+    <None Remove="Data\flags\GA.png" />
+    <None Remove="Data\flags\GB.png" />
+    <None Remove="Data\flags\GD.png" />
+    <None Remove="Data\flags\GE.png" />
+    <None Remove="Data\flags\GG.png" />
+    <None Remove="Data\flags\GH.png" />
+    <None Remove="Data\flags\GI.png" />
+    <None Remove="Data\flags\GL.png" />
+    <None Remove="Data\flags\GM.png" />
+    <None Remove="Data\flags\GN.png" />
+    <None Remove="Data\flags\GP.png" />
+    <None Remove="Data\flags\GQ.png" />
+    <None Remove="Data\flags\GR.png" />
+    <None Remove="Data\flags\GT.png" />
+    <None Remove="Data\flags\GU.png" />
+    <None Remove="Data\flags\HK.png" />
+    <None Remove="Data\flags\HN.png" />
+    <None Remove="Data\flags\HR.png" />
+    <None Remove="Data\flags\HT.png" />
+    <None Remove="Data\flags\HU.png" />
+    <None Remove="Data\flags\ID.png" />
+    <None Remove="Data\flags\IE.png" />
+    <None Remove="Data\flags\IL.png" />
+    <None Remove="Data\flags\IM.png" />
+    <None Remove="Data\flags\IN.png" />
+    <None Remove="Data\flags\IQ.png" />
+    <None Remove="Data\flags\IS.png" />
+    <None Remove="Data\flags\IT.png" />
+    <None Remove="Data\flags\JE.png" />
+    <None Remove="Data\flags\JM.png" />
+    <None Remove="Data\flags\JO.png" />
+    <None Remove="Data\flags\JP.png" />
+    <None Remove="Data\flags\KE.png" />
+    <None Remove="Data\flags\KG.png" />
+    <None Remove="Data\flags\KH.png" />
+    <None Remove="Data\flags\KI.png" />
+    <None Remove="Data\flags\KM.png" />
+    <None Remove="Data\flags\KN.png" />
+    <None Remove="Data\flags\KR.png" />
+    <None Remove="Data\flags\KW.png" />
+    <None Remove="Data\flags\KY.png" />
+    <None Remove="Data\flags\KZ.png" />
+    <None Remove="Data\flags\LA.png" />
+    <None Remove="Data\flags\LB.png" />
+    <None Remove="Data\flags\LI.png" />
+    <None Remove="Data\flags\LK.png" />
+    <None Remove="Data\flags\LR.png" />
+    <None Remove="Data\flags\LS.png" />
+    <None Remove="Data\flags\LT.png" />
+    <None Remove="Data\flags\LU.png" />
+    <None Remove="Data\flags\LV.png" />
+    <None Remove="Data\flags\LY.png" />
+    <None Remove="Data\flags\MA.png" />
+    <None Remove="Data\flags\MC.png" />
+    <None Remove="Data\flags\MD.png" />
+    <None Remove="Data\flags\ME.png" />
+    <None Remove="Data\flags\MG.png" />
+    <None Remove="Data\flags\MK.png" />
+    <None Remove="Data\flags\ML.png" />
+    <None Remove="Data\flags\MM.png" />
+    <None Remove="Data\flags\MN.png" />
+    <None Remove="Data\flags\MO.png" />
+    <None Remove="Data\flags\MQ.png" />
+    <None Remove="Data\flags\MR.png" />
+    <None Remove="Data\flags\MS.png" />
+    <None Remove="Data\flags\MT.png" />
+    <None Remove="Data\flags\MU.png" />
+    <None Remove="Data\flags\MV.png" />
+    <None Remove="Data\flags\MW.png" />
+    <None Remove="Data\flags\MX.png" />
+    <None Remove="Data\flags\MY.png" />
+    <None Remove="Data\flags\MZ.png" />
+    <None Remove="Data\flags\NA.png" />
+    <None Remove="Data\flags\NC.png" />
+    <None Remove="Data\flags\NE.png" />
+    <None Remove="Data\flags\NG.png" />
+    <None Remove="Data\flags\NI.png" />
+    <None Remove="Data\flags\NL.png" />
+    <None Remove="Data\flags\NO.png" />
+    <None Remove="Data\flags\NP.png" />
+    <None Remove="Data\flags\NZ.png" />
+    <None Remove="Data\flags\OM.png" />
+    <None Remove="Data\flags\PA.png" />
+    <None Remove="Data\flags\PE.png" />
+    <None Remove="Data\flags\PF.png" />
+    <None Remove="Data\flags\PG.png" />
+    <None Remove="Data\flags\PH.png" />
+    <None Remove="Data\flags\PK.png" />
+    <None Remove="Data\flags\PL.png" />
+    <None Remove="Data\flags\PR.png" />
+    <None Remove="Data\flags\PT.png" />
+    <None Remove="Data\flags\PW.png" />
+    <None Remove="Data\flags\QA.png" />
+    <None Remove="Data\flags\RE.png" />
+    <None Remove="Data\flags\RO.png" />
+    <None Remove="Data\flags\RS.png" />
+    <None Remove="Data\flags\RU.png" />
+    <None Remove="Data\flags\RW.png" />
+    <None Remove="Data\flags\SA.png" />
+    <None Remove="Data\flags\SB.png" />
+    <None Remove="Data\flags\SC.png" />
+    <None Remove="Data\flags\SE.png" />
+    <None Remove="Data\flags\SG.png" />
+    <None Remove="Data\flags\SI.png" />
+    <None Remove="Data\flags\SK.png" />
+    <None Remove="Data\flags\SL.png" />
+    <None Remove="Data\flags\SM.png" />
+    <None Remove="Data\flags\SN.png" />
+    <None Remove="Data\flags\SO.png" />
+    <None Remove="Data\flags\SR.png" />
+    <None Remove="Data\flags\SS.png" />
+    <None Remove="Data\flags\ST.png" />
+    <None Remove="Data\flags\SV.png" />
+    <None Remove="Data\flags\SZ.png" />
+    <None Remove="Data\flags\TC.png" />
+    <None Remove="Data\flags\TD.png" />
+    <None Remove="Data\flags\TG.png" />
+    <None Remove="Data\flags\TH.png" />
+    <None Remove="Data\flags\TJ.png" />
+    <None Remove="Data\flags\TL.png" />
+    <None Remove="Data\flags\TM.png" />
+    <None Remove="Data\flags\TN.png" />
+    <None Remove="Data\flags\TO.png" />
+    <None Remove="Data\flags\TR.png" />
+    <None Remove="Data\flags\TT.png" />
+    <None Remove="Data\flags\TW.png" />
+    <None Remove="Data\flags\TZ.png" />
+    <None Remove="Data\flags\UA.png" />
+    <None Remove="Data\flags\UG.png" />
+    <None Remove="Data\flags\US.png" />
+    <None Remove="Data\flags\UY.png" />
+    <None Remove="Data\flags\VA.png" />
+    <None Remove="Data\flags\VE.png" />
+    <None Remove="Data\flags\VG.png" />
+    <None Remove="Data\flags\VN.png" />
+    <None Remove="Data\flags\VU.png" />
+    <None Remove="Data\flags\YE.png" />
+    <None Remove="Data\flags\ZA.png" />
+    <None Remove="Data\flags\ZM.png" />
+    <None Remove="Data\flags\ZW.png" />
+    <None Remove="Data\flower.gif" />
+    <None Remove="Data\Glass_TTY_VT220.ttf" />
+    <None Remove="Data\Images\PerfectCircle\frame_1.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_10.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_11.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_12.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_13.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_14.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_15.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_16.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_17.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_18.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_19.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_2.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_20.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_21.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_22.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_23.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_24.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_25.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_26.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_27.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_28.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_29.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_3.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_30.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_4.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_5.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_6.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_7.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_8.png" />
+    <None Remove="Data\Images\PerfectCircle\frame_9.png" />
+    <None Remove="Data\intelone-mono-font-family-regular.ttf" />
+    <None Remove="Data\LabelProperties.xml" />
+    <None Remove="Data\leather.gif" />
+    <None Remove="Data\mcrystal.gif" />
+    <None Remove="Data\np.png" />
+    <None Remove="Data\perfectcircle.gif" />
+    <None Remove="Data\perfectcircle.png" />
+    <None Remove="Data\perfectcircle32.gif" />
+    <None Remove="Data\PetMe64.ttf" />
+    <None Remove="Data\pirateflag.jpg" />
+    <None Remove="Data\Px437_ATI_9x16.ttf" />
+    <None Remove="Data\Px437_IBM_CGAthin.ttf" />
+    <None Remove="Data\stripes.gif" />
+    <None Remove="Data\szwy.png" />
+    <None Remove="Data\tick.gif" />
+    <None Remove="Data\time4partslogowebsite.png" />
+    <None Remove="Data\transition.png" />
+    <None Remove="Data\UbuntuMono-Regular.ttf" />
+    <None Remove="Data\zegareczkidb.db" />
+    <None Remove="Data\zx82system.ttf" />
+    <None Remove="version.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\1.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\3.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\4.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\45.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\6.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\7.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\camo.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\cn22.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\ConsoleThemes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\d7.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\denDig.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AB.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AD.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AF.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\AZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BB.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BD.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BF.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BH.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BJ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BY.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\BZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CD.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CF.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CH.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CK.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CV.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CY.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\CZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\DE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\DJ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\DK.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\DM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\DO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\DZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\EC.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\EE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\EG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ES.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ET.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\FI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\FJ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\FO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\FR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GB.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GD.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GH.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GQ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\GU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\HK.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\HN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\HR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\HT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\HU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ID.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\IE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\IL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\IM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\IN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\IQ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\IS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\IT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\JE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\JM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\JO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\JP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KH.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KY.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\KZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LB.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LK.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LV.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\LY.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MC.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MD.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ME.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MK.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ML.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MQ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MV.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MX.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MY.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\MZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NC.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\NZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\OM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PF.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PH.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PK.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\PW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\QA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\RE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\RO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\RS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\RU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\RW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SB.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SC.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SK.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ST.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SV.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\SZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TC.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TD.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TH.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TJ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\TZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\UA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\UG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\US.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\UY.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\VA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\VE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\VG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\VN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\VU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\YE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ZA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ZM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flags\ZW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\flower.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Glass_TTY_VT220.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_22.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_23.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_25.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_26.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_27.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_28.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_30.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\PerfectCircle\frame_9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\intelone-mono-font-family-regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\LabelProperties.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\leather.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\mcrystal.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\np.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\perfectcircle.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\perfectcircle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\perfectcircle32.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\PetMe64.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pirateflag.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Px437_ATI_9x16.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Px437_IBM_CGAthin.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\stripes.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\szwy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\tick.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\time4partslogowebsite.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\transition.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\UbuntuMono-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\zegareczkidb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\zx82system.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="t4p.ico" />
+    <Content Include="version.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.4.0" />
+    <PackageReference Include="Azure.Identity" Version="1.14.2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OpenTK.GLWpfControl" Version="4.3.3" />
+    <PackageReference Include="Serilog" Version="4.2.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="cfg\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessDetailsControl\BusinessDetailsControl.csproj" />
+    <ProjectReference Include="..\CasioUKDeliveriesMVVM\CasioUKDeliveriesMVVM.csproj" />
+    <ProjectReference Include="..\ColourBrowserMVVM\ColourBrowserMVVM.csproj" />
+    <ProjectReference Include="..\ColoursOperations\ColoursOperations.csproj" />
+    <ProjectReference Include="..\CurOrdMVVM\CurOrdMVVM.csproj" />
+    <ProjectReference Include="..\DataServicesNET80\DataServicesNET80.csproj" />
+    <ProjectReference Include="..\denLabelMVVM\denLabelMVVM.csproj" />
+    <ProjectReference Include="..\denLanguageResourses\denLanguageResourses.csproj" />
+    <ProjectReference Include="..\denModels\denModels.csproj" />
+    <ProjectReference Include="..\denSharedLibrary\denSharedLibrary.csproj" />
+    <ProjectReference Include="..\denSignalRClient\denSignalRClient.csproj" />
+    <ProjectReference Include="..\denViewModels\denViewModels.csproj" />
+    <ProjectReference Include="..\denWPFSharedLibrary\denWPFSharedLibrary.csproj" />
+    <ProjectReference Include="..\EmailService\EmailService.csproj" />
+    <ProjectReference Include="..\EntityEventsService\EntityEventsService.csproj" />
+    <ProjectReference Include="..\MayAlsoFitMVVM\MayAlsoFitMVVM.csproj" />
+    <ProjectReference Include="..\OrdBroMVVM\OrdBroMVVM.csproj" />
+    <ProjectReference Include="..\ParametersMVVM\ParametersMVVM.csproj" />
+    <ProjectReference Include="..\Printers\Printers.csproj" />
+    <ProjectReference Include="..\ProBroMVVM\ProBroMVVM.csproj" />
+    <ProjectReference Include="..\SalesSummaryControl\SalesSummaryControl.csproj" />
+    <ProjectReference Include="..\SettingsKeptInFile\SettingsKeptInFile.csproj" />
+    <ProjectReference Include="..\StorageExplorerMVVM\StorageExplorerMVVM.csproj" />
+    <ProjectReference Include="..\TypesMVVM\TypesMVVM.csproj" />
+    <ProjectReference Include="..\WatchExplorerMVVM\WatchExplorerMVVM.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

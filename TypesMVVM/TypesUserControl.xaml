@@ -1,0 +1,78 @@
+<UserControl x:Class="TypesMVVM.TypesUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:vm="clr-namespace:TypesMVVM" d:DataContext="{d:DesignInstance Type=vm:TypesViewModel}"
+                xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+  
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <shared:NotBooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter"/>
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+      
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" IsEnabled="{Binding IsDataLoaded}">
+            <DockPanel DockPanel.Dock="Top">
+                <UniformGrid DockPanel.Dock="Left" HorizontalAlignment="Stretch" Rows="1">
+                    <Label Margin="3,3,3,3">Type</Label>
+                    <ComboBox Margin="3,3,3,3" IsTextSearchEnabled="False" IsEditable="True" HorizontalAlignment="Stretch" ItemsSource="{Binding AllTypes}" 
+          DisplayMemberPath="Name" 
+          SelectedItem="{Binding SelectedType}"
+                            >
+                        <i:Interaction.Behaviors>
+                            <shared:ComboBoxTextChangedBehavior Text="{Binding TypesText, Mode=TwoWay}" />
+                        </i:Interaction.Behaviors>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ComboBoxSelectionChangedCommand}" />
+                            </i:EventTrigger>
+                         
+                        </i:Interaction.Triggers>
+                      
+
+                    </ComboBox>
+                    <Button Margin="3,3,3,3" Command="{Binding AddTypeCommand}" IsEnabled="{Binding GoodToAddType}">Add Type</Button>
+                </UniformGrid>
+                <Button DockPanel.Dock="Right" Margin="3,3,3,3" HorizontalAlignment="Right" Command="{Binding RemoveTypeCommand}" IsEnabled="{Binding CanRemoveType}">Remove Type</Button>
+            </DockPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Visibility="{Binding CanRemoveType,Converter={StaticResource BooleanToVisibilityConverter}}">
+                <GroupBox x:Name="listOfParameters">
+                    <WrapPanel x:Name="parametersPanel"  Orientation="Vertical" >
+                        <UniformGrid  HorizontalAlignment="Stretch" Rows="1">
+                            <Label Margin="20,3,20,3">Parameter name:</Label>
+                            <ComboBox  Margin="3,3,3,3"  DisplayMemberPath="Name" ItemsSource="{Binding AllParameters}" SelectedItem="{Binding SelectedParameter}"></ComboBox>
+                            <Button Margin="3,3,3,3" Padding="10,0,10,0" Command="{Binding AddParameterCommand}" IsEnabled="{Binding GoodToAddParameter}">Associate parameter</Button>
+                        </UniformGrid>
+                        <ItemsControl ItemsSource="{Binding ParametryItems}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <UniformGrid Rows="1">
+                                        <TextBlock Text="{Binding Nazwa}" Margin="3" Padding="10,0,10,3" />
+                                        <Button Content="Remove" Margin="3" Padding="10,0,10,3" Command="{Binding RemoveCommand}" />
+                                        <Button Content="UP" Margin="3" Padding="10,0,10,3" Command="{Binding MoveUpCommand}" IsEnabled="{Binding IsMoveUpEnabled}" />
+                                        <Button Content="DOWN" Margin="3" Padding="10,0,10,3" Command="{Binding MoveDownCommand}" IsEnabled="{Binding IsMoveDownEnabled}" />
+                                    </UniformGrid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </WrapPanel>
+                </GroupBox>
+            </ScrollViewer>
+        </DockPanel>
+        <ProgressBar Grid.Row="1"  Visibility="{Binding IsDataLoaded, Converter={StaticResource NotBooleanToVisibilityConverter}}" IsIndeterminate="True" Height="15"/>
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,48 @@
+﻿<Window x:Class="ProBroMVVM.PrePrintLabelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ProBroMVVM"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:denviewmodels="clr-namespace:denViewModels;assembly=denViewModels" d:DataContext="{d:DesignInstance Type=denviewmodels:PrePrintLabelViewModel}"
+        mc:Ignorable="d"
+        Title="PrePrintLabel" Height="250" Width="300" WindowStartupLocation="CenterOwner">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding PerformTestCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+    
+        <ItemsControl ItemsSource="{Binding LabelProps}" Grid.Row="1" Margin="5">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton Content="{Binding Name}" IsChecked="{Binding Tick}">
+                        <RadioButton.Command>
+                            <Binding Path="DataContext.RadioButtonCommand" RelativeSource="{RelativeSource AncestorType={x:Type ItemsControl}}"/>
+                        </RadioButton.Command>
+                        <RadioButton.CommandParameter>
+                            <Binding Path="Content" RelativeSource="{RelativeSource Self}"/>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="1"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        <UniformGrid Rows="1" Grid.Row="0">
+            <Button Content="-" Command="{Binding DecrementCopiesCommand}"/>
+            <TextBlock Text="{Binding Copies}" HorizontalAlignment="Center"/>
+            <Button Content="+" Command="{Binding IncrementCopiesCommand}"/>
+        </UniformGrid>
+        <Button Grid.Row="2" Content="Print label" Command="{Binding PrintBoxCommand}" Margin="0,5,0,0"/>
+    </Grid>
+</Window>

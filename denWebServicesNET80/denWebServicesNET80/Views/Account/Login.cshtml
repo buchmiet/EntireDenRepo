@@ -1,0 +1,25 @@
+﻿@using denWebServicesNET80.Models;
+@model LoginViewModel
+<h2>Log in</h2>
+<form asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="RememberMe">
+            <input asp-for="RememberMe" />
+            @Html.DisplayNameFor(m => m.RememberMe)
+        </label>
+    </div>
+    <div>
+        <button type="submit">Log in</button>
+    </div>
+</form>

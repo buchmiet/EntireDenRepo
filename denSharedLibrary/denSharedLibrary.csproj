@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+
+		<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	
+  <ItemGroup>
+	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+	<PackageReference Include="HtmlAgilityPack" Version="1.11.64" />
+    <PackageReference Include="MailKit" Version="4.7.1.1" />
+    <PackageReference Include="MimeKit" Version="4.7.1" />
+    <PackageReference Include="QuestPDF" Version="2024.7.3" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AmazonSPAPIClient\AmazonSPAPIClient.csproj" />
+    <ProjectReference Include="..\DataServicesNET80\DataServicesNET80.csproj" />
+    <ProjectReference Include="..\denEbayNET80\denEbayNET80.csproj" />
+    <ProjectReference Include="..\denMethods\denMethods.csproj" />
+    <ProjectReference Include="..\denModels\denModels.csproj" />
+    <ProjectReference Include="..\SettingsKeptInFile\SettingsKeptInFile.csproj" />
+  </ItemGroup>
+  
+
+</Project>

@@ -1,0 +1,217 @@
+<UserControl x:Class="CasioUKDeliveriesMVVM.CasioUKDeliveriesUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:CasioUKDeliveriesMVVM"
+               xmlns:res="clr-namespace:denLanguageResourses;assembly=denLanguageResourses"
+               xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=vm:CasioUKDeliveriesViewModel}"
+             xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Margin="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Back orders" Grid.Column="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                 
+
+                <Grid Grid.Row="0" VerticalAlignment="Stretch" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="look up MPN" Grid.Row="0">
+                        <TextBox Margin="3" x:Name="boHigh" Text="{Binding BoHigh, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsDataLoaded}"/>
+                    </GroupBox>
+                   
+                    <ProgressBar Grid.Row="0" Visibility="{Binding PokazujProgressBar}"  IsIndeterminate="True" />
+                </Grid>
+
+
+                <ListView Grid.Row="1" Margin="3" ItemsSource="{Binding BakOrdy}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mpn"  DisplayMemberBinding="{Binding mpn}"/>
+                            <GridViewColumn Header="Quantity"  DisplayMemberBinding="{Binding quantity}"/>
+                            <GridViewColumn Header="Ordered on"  DisplayMemberBinding="{Binding orderedon}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            </GroupBox>
+
+            <GroupBox Header="Current order" Grid.Column="1" Margin="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <GroupBox Header="look up MPN" Grid.Row="0">
+                            <TextBox Margin="3" x:Name="curOrHigh" Text="{Binding CurOrHigh, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </GroupBox>
+
+                        <GroupBox Header="add MPN" Grid.Row="1">
+                            <UniformGrid Rows="1" Margin="3">
+                                <TextBox Margin="3" x:Name="addMpnTXT" Text="{Binding AddMpnTXT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <Button Margin="3" x:Name="addMpnBut" Command="{Binding AddMpnCommand}" IsEnabled="{Binding CanAddMpn}">add MPN</Button>
+                            </UniformGrid>
+                        </GroupBox>
+
+                        <GroupBox Header="search for product" Grid.Row="2">
+                            <Button Margin="3" Command="{Binding ProductBrowserCommand}">Product browser</Button>
+                        </GroupBox>
+
+                    
+                    <ListView Grid.Row="3" Margin="3" x:Name="curList" ItemsSource="{Binding CurOrdy}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="mpn"  DisplayMemberBinding="{Binding mpn}"/>
+                                <GridViewColumn Header="quantity"  DisplayMemberBinding="{Binding quantity}"/>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Command="{Binding Path=DataContext.ChangeQuantityCommand, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding}">Quantity</Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Row="4">
+                        <UniformGrid>
+                            <TextBlock Text="{x:Static res:Resources.TotalAmount}"/>
+                            <TextBlock Text="{Binding TotalAmount}"/>
+                        </UniformGrid>
+                    </Grid>
+                    <Button Margin="3" Grid.Row="5"  Command="{Binding GenerateOrderCommand}" IsEnabled="{Binding IsDataLoaded}">Generate order->back orders</Button>
+                    </Grid>
+               
+                    <GroupBox Header="Suggestions" Grid.Column="1">
+                        <UniformGrid Columns="1">
+                            <GroupBox Header="from Casio UK">
+                                <DataGrid  Margin="3" x:Name="sugUKList" ItemsSource="{Binding SugUKListItems}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="mpn"  Width="auto" Binding="{Binding mpn}"/>
+                                        <DataGridTextColumn Header="name"  Width="auto" Binding="{Binding name}">
+
+                                        </DataGridTextColumn>
+                                        <DataGridTemplateColumn Width="SizeToHeader" Header="Add">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                <Button Command="{Binding Path=DataContext.AddUKCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}">Add</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                            <GroupBox Header="from Casio PL">
+                                <DataGrid  Margin="3" x:Name="sugPLList" ItemsSource="{Binding SugPLListItems}" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="mpn" IsReadOnly="True" Width="auto" Binding="{Binding mpn}"/>
+                                        <DataGridTextColumn Header="name" IsReadOnly="True" Width="auto" Binding="{Binding name}"/>
+                                        <DataGridTextColumn Header="%" IsReadOnly="True" Width="auto" Binding="{Binding morExpBy}"/>
+                                        <DataGridTemplateColumn Width="SizeToHeader">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                <Button Command="{Binding Path=DataContext.AddPLCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}">Add</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </UniformGrid>
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+        <GroupBox Header="Received orders" Grid.Column="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <GroupBox Header="Look up product">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <GroupBox Header="Search by MPN" Margin="3" Grid.Row="0">
+                            <UniformGrid Rows="1" >
+                                <TextBox Margin="3" Text="{Binding SearchMpnText}"></TextBox>
+                                <Button Margin="3" Command="{Binding SearchCommand}">Search</Button>
+                            </UniformGrid>
+                        </GroupBox>
+
+                        <ListView Margin="3" Grid.Row="2" ItemsSource="{Binding SearchedItems}">
+
+                            <ListView.View>
+                                <GridView >
+                                    <GridViewColumn Header="mpn"  DisplayMemberBinding="{Binding mpn}"/>
+                                    <GridViewColumn Header="price"  DisplayMemberBinding="{Binding price}"/>
+                                    <GridViewColumn Header="quantity"  DisplayMemberBinding="{Binding quantity}"/>
+                                    <GridViewColumn Header="Delivered on"  DisplayMemberBinding="{Binding deliveredon}"/>
+                                </GridView>
+                            </ListView.View>
+
+                        </ListView>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="Introduce invoice here" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBox Grid.Row="0" Margin="3" Text="{Binding InvoiceText}" TextWrapping="Wrap"  AcceptsReturn="True" ></TextBox>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Margin="3" Command="{Binding AddInvoiceCommand}" IsEnabled="{Binding IsInvoiceProcessing}">Add Invoice</Button>
+                            <ProgressBar Grid.Row="1" Visibility="{Binding PokazujInvoiceProgressBar}"  IsIndeterminate="True" />
+                        </Grid>
+                      
+                   
+                        <!-- Reszta Twojego XAML'a -->
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
+
+
+    </Grid>
+</UserControl>

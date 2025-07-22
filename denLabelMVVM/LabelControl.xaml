@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="denLabelMVVM.LabelControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:denLabelMVVM"
+         xmlns:res="clr-namespace:denLanguageResourses;assembly=denLanguageResourses"
+                xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+             mc:Ignorable="d" 
+               xmlns:vm="clr-namespace:denViewModels;assembly=denViewModels" d:DataContext="{d:DesignInstance Type=vm:LabelControlViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+
+        <shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+    </UserControl.Resources>
+
+
+
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" HorizontalAlignment="Stretch" >
+                <UniformGrid   HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <TextBlock VerticalAlignment="Center" Text="{x:Static res:Resources.LabelPrinter}"></TextBlock>
+                    <ComboBox 
+                        Margin="3,3,3,3"
+                        IsTextSearchEnabled="False"
+                        IsEditable="False"
+                        IsEnabled="{Binding IsComboBoxEnabled}"
+                        ItemsSource="{Binding Printers}"
+                        SelectedItem="{Binding SelectedPrinter, Mode=TwoWay}" />
+                </UniformGrid>
+            </Grid>
+            <Button Margin="3" Grid.Column="1" Command="{Binding AddNewAddressLabelCommand}" IsEnabled="{Binding IsDataLoaded}" Content="{x:Static res:Resources.AddNewAddressLabelTemplate}" Visibility="{Binding Need2AddAddressLabel,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <Button Margin="3" Grid.Column="2" Command="{Binding AddNewProductLabelCommand}" IsEnabled="{Binding IsDataLoaded}" Content="{x:Static res:Resources.AddNewProductLabelTemplate}"/>
+            <Button Margin="3" Grid.Column="3" Command="{Binding AddNewReturnLabelCommand}" IsEnabled="{Binding IsDataLoaded}" Content="{x:Static res:Resources.AddNewReturnLabelTemplate}" Visibility="{Binding Need2AddReturnLabel,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        </Grid>
+
+
+        <Grid Grid.Row="1"  >
+            <ItemsControl ItemsSource="{Binding LabelTypes}" HorizontalAlignment="Center" VerticalAlignment="Center" Background="BlanchedAlmond">
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type vm:ProductLabelViewModel}">
+                        <local:ProductLabel />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:AddressLabelViewModel}">
+                        <local:AddressLabelControl />
+                    </DataTemplate>
+                </ItemsControl.Resources>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="1" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+            </ItemsControl>
+
+
+
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

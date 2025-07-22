@@ -1,0 +1,117 @@
+﻿<Window x:Class="ProBroMVVM.AddMarketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ProBroMVVM" d:DataContext="{d:DesignInstance Type=vm:AddMarketViewModel}"
+          xmlns:shared="clr-namespace:denWPFSharedLibrary;assembly=denWPFSharedLibrary"
+        mc:Ignorable="d"
+        Title="Add Market" Height="250" Width="813.334">
+    <Window.Resources>
+        <shared:MarketToVisibilityConverter x:Key="MarketToVisibilityConverter"/>
+        <shared:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+      
+        <shared:NotNullToVisibilityConverter x:Key="NotNullToVisibilityConverter"/>
+    </Window.Resources>
+    <StackPanel>
+        <Label x:Name="assItemMarketLabel">Associate item with market</Label>
+        <ComboBox Margin="3,3,3,3" DisplayMemberPath="Name" SelectedValuePath="Id" ItemsSource="{Binding Markets}" SelectedItem="{Binding SelectedMarket}" IsEnabled="{Binding BrandNew}"></ComboBox>
+        <UniformGrid Rows="1" x:Name="Selekszyn">
+            <Grid x:Name="ebayPanel" Visibility="{Binding SelectedMarket, Converter={StaticResource MarketToVisibilityConverter}, ConverterParameter=1}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0">SEO name:</Label>
+                <TextBox Grid.Column="1" x:Name="seoName" Text="{Binding SEOName}" HorizontalAlignment="Stretch" Margin="3"></TextBox>
+            </Grid>
+            <Grid x:Name="amPanel" Visibility="{Binding SelectedMarket, Converter={StaticResource MarketToVisibilityConverter}, ConverterParameter=2}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0">SKU:</Label>
+                <TextBox Grid.Column="1" x:Name="SKUBox" Text="{Binding SKU}" HorizontalAlignment="Stretch" Margin="3">
+
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="XX-XXXX-XXXX" Foreground="LightGray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+
+                </TextBox>
+            </Grid>
+        </UniformGrid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" x:Name="itemNasin">Item number:</Label>
+            <TextBox Grid.Column="1" x:Name="itemNumber" Text="{Binding ItemNumber}" HorizontalAlignment="Stretch" Margin="3">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="XXXXXXXXXX" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </Grid>
+        <StackPanel Orientation="Horizontal">
+            <Label>Quantity sold:</Label>
+            <ComboBox Margin="3,3,3,3" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding SelectedQuantitySold}" ItemsSource="{Binding QuantitiesSold}"></ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" x:Name="sold2getherWithpanel">
+            <Label>Sold together with</Label>
+            <Button Content="Click to add item that sells together" Margin="3"
+            Command="{Binding AddSoldTogetherCommand}" 
+            Visibility="{Binding SoldWithContent, Converter={StaticResource NotNullToVisibilityConverter}}">
+            </Button>
+            <Label Content="{Binding SoldWithContent.Name}" Margin="3"
+             Visibility="{Binding SoldWithContent, Converter={StaticResource NullToVisibilityConverter}}">
+            </Label>
+            <Button Content="Click to remove" 
+            Command="{Binding RemoveSoldTogetherCommand}" Margin="3"
+            Visibility="{Binding SoldWithContent, Converter={StaticResource NullToVisibilityConverter}}">
+            </Button>
+        </StackPanel>
+        <DockPanel>
+            <!-- Placeholder for buttons. The implementation will depend on the specific commands or actions you want to bind to these buttons. -->
+            <Button DockPanel.Dock="left" HorizontalAlignment="Left" Command="{Binding CancelCommand}" Margin="3" Padding="3">Cancel</Button>
+            <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding OKCommand}" Margin="3" Padding="3">OK</Button>
+        </DockPanel>
+    </StackPanel>
+</Window>

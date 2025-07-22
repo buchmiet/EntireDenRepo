@@ -1,0 +1,81 @@
+﻿<Window x:Class="ProBroMVVM.AddNewProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:res="clr-namespace:denLanguageResourses;assembly=denLanguageResourses"
+        xmlns:vm="clr-namespace:denViewModels;assembly=denViewModels" d:DataContext="{d:DesignInstance Type=vm:AddNewProductViewModel}"
+        mc:Ignorable="d"
+      Title="{x:Static res:Resources.AddProduct}" Height="288" Width="632" WindowStartupLocation="CenterOwner">
+    <Grid >
+        <Border BorderBrush="#dedede" BorderThickness="3">
+        <StackPanel >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="0" Background="#dedede">
+                <TextBlock Margin="3"  Text="{x:Static res:Resources.Name}"  VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Margin="3" Grid.Column="0" Grid.Row="1" Text="{x:Static res:Resources.ShortName}"/>
+                    <StackPanel Grid.Column="0" Grid.Row="2" Background="#dedede">
+                        <TextBlock Margin="3"  Text="MPN" Background="#dedede" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Margin="3" Grid.Column="0" Grid.Row="3" Text="{x:Static res:Resources.PricePaidExVat}"/>
+                    <StackPanel Grid.Column="0" Grid.Row="4" Background="#dedede">
+                        <TextBlock Margin="3"  Text="{x:Static res:Resources.Weight}"  VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Margin="3" Grid.Column="0" Grid.Row="5" Text="{x:Static res:Resources.Supplier}"/>
+                    <StackPanel Grid.Column="0" Grid.Row="6" Background="#dedede">
+                        <TextBlock Margin="3"  Text="{x:Static res:Resources.Brand}"  VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Margin="3" Grid.Column="0" Grid.Row="7" Text="{x:Static res:Resources.Type}"/>
+
+                    <StackPanel Grid.Column="1" Grid.Row="0" Background="#dedede">
+                        <TextBox Margin="3"  Grid.Row="0" Text="{Binding Name}"  VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBox Margin="3" Grid.Column="1" Grid.Row="1" Text="{Binding ShortName}"></TextBox>
+                    <StackPanel Grid.Column="1" Grid.Row="2" Background="#dedede">
+                        <TextBox Margin="3"  Text="{Binding MPN}"></TextBox>
+                    </StackPanel>
+                    <TextBox Margin="3" Grid.Column="1" Grid.Row="3" Text="{Binding Price}"></TextBox>
+                    <StackPanel Grid.Column="1" Grid.Row="4" Background="#dedede">
+                        <TextBox Margin="3"  Text="{Binding Weight}"></TextBox>
+                    </StackPanel>
+                    <ComboBox Margin="3" Grid.Column="1" Grid.Row="5" ItemsSource="{Binding Suppliers}" SelectedItem="{Binding SelectedSupplier}" DisplayMemberPath="Name" SelectedValuePath="id"/>
+                    <StackPanel Grid.Column="1" Grid.Row="6" Background="#dedede">
+                        <ComboBox Margin="3" Grid.Column="1" Grid.Row="6" ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}" DisplayMemberPath="Name" SelectedValuePath="id"/>
+                    </StackPanel>
+                    <ComboBox Margin="3" Grid.Column="1" Grid.Row="7" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" DisplayMemberPath="Name" SelectedValuePath="id"/>
+
+
+                </Grid>
+                <Grid VerticalAlignment="Bottom" Background="#dedede">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="3" Padding="3" Grid.Column="0" HorizontalAlignment="Stretch" 
+            Command="{Binding CancelCommand}" Content="{x:Static res:Resources.Cancel}" />
+                <StackPanel Grid.Column="1"/>
+                <Button Margin="3" Padding="3" Grid.Column="2" HorizontalAlignment="Stretch" 
+            Command="{Binding AddProductCommand}" Content="{x:Static res:Resources.AddProduct}"/> 
+            </Grid>
+
+
+        </StackPanel>
+        </Border>
+    </Grid>
+</Window>

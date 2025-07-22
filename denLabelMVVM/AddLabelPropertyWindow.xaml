@@ -1,0 +1,71 @@
+﻿<Window x:Class="denLabelMVVM.AddLabelPropertyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:denLabelMVVM"
+        mc:Ignorable="d" 
+        Title="Add New Label Design" Height="357" Width="326">
+    <StackPanel Margin="3">
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Label Name"/>
+            <TextBox Text="{Binding LabelName, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Top Font"/>
+            <TextBox Text="{Binding TopFont, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Large Font"/>
+            <TextBox Text="{Binding LargeFont, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Lesser Font"/>
+            <TextBox Text="{Binding LesserFont, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Bottom Font"/>
+            <TextBox Text="{Binding BottomFont, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Height"/>
+            <TextBox Text="{Binding Height, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Width"/>
+            <TextBox Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Central Line Spacing"/>
+            <TextBox Text="{Binding CentralLineSpacing, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Bottom Margin"/>
+            <TextBox Text="{Binding BottomMargin, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Top Margin"/>
+            <TextBox Text="{Binding TopMargin, UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <TextBlock Text="Landscape"/>
+            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding Landscape}"/>
+        </UniformGrid>
+
+        <UniformGrid Rows="1" Columns="2" Margin="2">
+            <Button Margin="2" Content="Cancel" Command="{Binding CancelCommand}"/>
+            <Button Margin="2" Content="Ok" Command="{Binding OkCommand}"/>
+        </UniformGrid>
+    </StackPanel>
+</Window>

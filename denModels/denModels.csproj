@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Persistent\CodeForCountry.cs" />
+	  <Compile Remove="Persistent\ResidentialAddress.cs" />
+	  <Compile Remove="Persistent\VatRateForCountry.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Persistent\CodeForCountry.cs" />
+	  <None Include="Persistent\ResidentialAddress.cs" />
+	  <None Include="Persistent\VatRateForCountry.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="SkiaSharp" Version="2.88.8" />
+  </ItemGroup>
+
+</Project>

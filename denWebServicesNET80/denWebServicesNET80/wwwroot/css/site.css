@@ -1,0 +1,16 @@
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+body {
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+    background-color: black;
+    color: #ffb000;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
